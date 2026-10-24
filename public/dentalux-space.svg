@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Espacio DentaLux ilustrado</title>
+  <desc id="desc">Composición arquitectónica provisional en blanco, negro y dorado.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#faf7ed"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f0e17a"/><stop offset=".55" stop-color="#d0b052"/><stop offset="1" stop-color="#7e6525"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="64" fill="url(#wall)"/>
+  <path d="M0 620h1200v180H0z" fill="#f1f0ec"/>
+  <path d="M168 620V188c0-35 29-64 64-64h736c35 0 64 29 64 64v432" fill="none" stroke="#111111" stroke-width="16"/>
+  <path d="M408 620V292c0-72 58-130 130-130h124c72 0 130 58 130 130v328" fill="#111111"/>
+  <path d="M448 620V306c0-54 44-98 98-98h108c54 0 98 44 98 98v314" fill="#ffffff"/>
+  <rect x="250" y="398" width="208" height="144" rx="28" fill="#ffffff" stroke="#d0b052" stroke-width="10"/>
+  <rect x="742" y="398" width="208" height="144" rx="28" fill="#111111"/>
+  <path d="M282 492h144M774 492h144" stroke="url(#gold)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M206 620h788" stroke="#d0b052" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="600" cy="344" r="42" fill="none" stroke="url(#gold)" stroke-width="12"/>
+  <text x="600" y="721" text-anchor="middle" fill="#7e6525" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="6">ILUSTRACIÓN PROVISIONAL</text>
+</svg>
