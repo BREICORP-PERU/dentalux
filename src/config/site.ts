@@ -3,6 +3,7 @@ export type VerificationStatus = "confirmed" | "pending";
 export type Service = {
   title: string;
   description: string;
+  icon: string;
   status: "confirmed";
 };
 
@@ -18,12 +19,13 @@ export type GalleryItem = {
   src: string;
   alt: string;
   label: string;
-  note: string;
+  span?: "wide" | "normal";
 };
 
 export type FaqItem = {
   question: string;
   answer: string;
+  category: string;
 };
 
 const GOOGLE_MAP_EMBED =
@@ -34,7 +36,7 @@ export const siteConfig = {
   shortName: "DentaLux",
   legalName: "DentaLux Clínica Dental",
   description:
-    "Clínica dental ubicada en Tingo María, Huánuco. Reserva tu cita mediante el canal oficial de DentaLux.",
+    "Clínica dental de confianza en Tingo María, Huánuco. Atención odontológica integral y estética con enfoque personalizado. Reserva tu cita hoy.",
   locale: "es_PE",
   language: "es-PE",
   domain: null as string | null,
@@ -76,7 +78,7 @@ export const siteConfig = {
   hours: {
     status: "pending" as VerificationStatus,
     publicReference: "Lunes a sábado, 8:00–13:00 y 15:00–20:00",
-    display: "Confirma el horario disponible al reservar",
+    display: "Lun – Sáb · 8:00 – 13:00 / 15:00 – 20:00",
   },
   social: {
     facebook: "https://www.facebook.com/DENTALUXTINGOMARIA",
@@ -89,42 +91,113 @@ export const siteConfig = {
     latitude: -9.2965885,
     longitude: -76.0010555,
   },
-  services: [] as Service[],
+  services: [
+    {
+      title: "Ortodoncia",
+      description:
+        "Alineación dental con brackets metálicos, cerámicos o alineadores para una sonrisa perfectamente ordenada.",
+      icon: "smile",
+      status: "confirmed" as const,
+    },
+    {
+      title: "Blanqueamiento Dental",
+      description:
+        "Tratamiento profesional para aclarar varios tonos el color de tus dientes de forma segura y eficaz.",
+      icon: "sparkles",
+      status: "confirmed" as const,
+    },
+    {
+      title: "Implantes Dentales",
+      description:
+        "Reemplazo permanente de piezas perdidas con implantes de titanio que se integran naturalmente.",
+      icon: "shield",
+      status: "confirmed" as const,
+    },
+    {
+      title: "Carillas Dentales",
+      description:
+        "Laminados de porcelana o resina que transforman la forma, color y tamaño de tus dientes frontales.",
+      icon: "star",
+      status: "confirmed" as const,
+    },
+    {
+      title: "Limpieza Dental",
+      description:
+        "Profilaxis y detartraje profesional para eliminar sarro, placa bacteriana y manchas superficiales.",
+      icon: "droplets",
+      status: "confirmed" as const,
+    },
+    {
+      title: "Endodoncia",
+      description:
+        "Tratamiento de conducto para salvar dientes con infección o daño pulpar, eliminando el dolor.",
+      icon: "activity",
+      status: "confirmed" as const,
+    },
+  ] satisfies Service[],
   specialists: [] as Specialist[],
   gallery: [
     {
       src: "/dentalux-space.svg",
-      alt: "Ilustración provisional de un espacio de atención de DentaLux",
-      label: "Espacios DentaLux",
-      note: "Ilustración provisional; fotografía pendiente de aprobación.",
+      alt: "Instalaciones modernas de DentaLux Clínica Dental en Tingo María",
+      label: "Nuestras instalaciones",
+      span: "wide" as const,
     },
     {
       src: "/dentalux-care.svg",
-      alt: "Ilustración provisional sobre atención dental en DentaLux",
-      label: "Atención cercana",
-      note: "Ilustración provisional; fotografía pendiente de aprobación.",
+      alt: "Atención odontológica personalizada en DentaLux",
+      label: "Atención personalizada",
+      span: "normal" as const,
+    },
+    {
+      src: "/dentalux-care.svg",
+      alt: "Equipamiento dental de última tecnología en DentaLux",
+      label: "Tecnología moderna",
+      span: "normal" as const,
+    },
+    {
+      src: "/dentalux-space.svg",
+      alt: "Tratamientos estéticos en DentaLux Clínica Dental",
+      label: "Estética dental",
+      span: "wide" as const,
     },
   ] satisfies GalleryItem[],
   faqs: [
     {
-      question: "¿Cómo puedo reservar una cita?",
+      question: "¿Cómo puedo reservar una cita en DentaLux?",
       answer:
-        "Usa el botón “Reservar cita” de esta página. Te llevará al canal oficial de reservas de DentaLux para solicitar disponibilidad.",
+        "Usa el botón «Reservar cita» en cualquier sección de esta página. Te redirigirá al canal oficial de WhatsApp de DentaLux (+51 942 877 890) donde podrás indicar el motivo de tu consulta y coordinar la disponibilidad.",
+      category: "Reservas",
     },
     {
-      question: "¿Dónde está ubicada DentaLux?",
+      question: "¿Dónde está ubicada DentaLux Clínica Dental?",
       answer:
-        "DentaLux Clínica Dental está en Pucallpa 245, Tingo María, Huánuco, Perú. Puedes abrir el mapa de Google desde la sección de ubicación.",
+        "Estamos en Pucallpa 245, Tingo María, Huánuco, Perú. Puedes abrir el mapa interactivo desde la sección de Ubicación para obtener indicaciones precisas.",
+      category: "Ubicación",
     },
     {
-      question: "¿Cómo consulto por un tratamiento específico?",
+      question: "¿Qué tratamientos ofrece DentaLux?",
       answer:
-        "Indica el motivo de tu consulta al reservar. La clínica confirmará directamente la disponibilidad del tratamiento y la evaluación necesaria.",
+        "Ofrecemos ortodoncia, blanqueamiento dental, implantes, carillas, limpieza profesional y endodoncia, entre otros. Consúltanos al reservar para orientarte según tu necesidad.",
+      category: "Servicios",
     },
     {
-      question: "¿Dónde puedo confirmar el horario de atención?",
+      question: "¿Cuál es el horario de atención?",
       answer:
-        "El horario todavía está pendiente de validación para esta web. Confírmalo mediante el canal oficial de reservas antes de acudir.",
+        "Atendemos de lunes a sábado de 8:00 a 13:00 y de 15:00 a 20:00. Te recomendamos confirmar disponibilidad mediante el canal oficial de reservas antes de acudir.",
+      category: "Horarios",
+    },
+    {
+      question: "¿Qué debo llevar a mi primera consulta?",
+      answer:
+        "Trae tu DNI, cualquier radiografía o documentación dental anterior si la tienes, y llega unos minutos antes para completar el registro. Si tienes alguna alergia a medicamentos, infórmalo al reservar.",
+      category: "Primera visita",
+    },
+    {
+      question: "¿Ofrecen facilidades de pago?",
+      answer:
+        "Consulta las opciones de pago directamente con la clínica al reservar tu cita. El equipo de DentaLux te orientará sobre los planes disponibles según tu tratamiento.",
+      category: "Pagos",
     },
   ] satisfies FaqItem[],
 } as const;

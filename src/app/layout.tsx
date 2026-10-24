@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/ui/Footer";
@@ -6,6 +6,12 @@ import MotionProvider from "@/components/ui/MotionProvider";
 import Navbar from "@/components/ui/Navbar";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { getSiteUrl, siteConfig, socialLinks } from "@/config/site";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#111111",
+};
 
 const inter = Inter({
   subsets: ["latin"],
