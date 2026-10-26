@@ -62,11 +62,11 @@ export default function Gallery() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gold/25 text-gold-dark text-xs font-bold uppercase tracking-[0.22em] mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
-              Nuestra Clinica
+              Galería provisional
             </span>
             <h2 id="gallery-title" className="font-heading text-4xl font-bold text-ink md:text-5xl leading-tight">
-              Espacios diseados para{" "}
-              <span className="text-brand-gradient">tu bienestar</span>
+              Un espacio preparado para{" "}
+              <span className="text-brand-gradient">fotografías auténticas</span>
             </h2>
           </m.div>
           <m.p
@@ -75,7 +75,7 @@ export default function Gallery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-sm text-muted leading-relaxed"
           >
-            Instalaciones modernas y un ambiente pensado para que tu experiencia dental sea comoda y tranquila.
+            Las imágenes reales de la clínica se publicarán únicamente cuando sean entregadas y aprobadas por DentaLux.
           </m.p>
         </div>
 
@@ -109,6 +109,7 @@ export default function Gallery() {
                 <p className="font-heading text-lg font-bold text-white leading-tight">
                   {item.label}
                 </p>
+                <p className="mt-1 text-xs leading-relaxed text-white/70">{item.note}</p>
               </div>
               <div className="absolute top-4 right-4 grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
                 <Expand size={16} aria-hidden="true" />
@@ -155,6 +156,7 @@ export default function Gallery() {
                 <h3 id="gallery-dialog-title" className="font-heading text-2xl font-bold text-ink">
                   {activeItem.label}
                 </h3>
+                <p className="mt-2 text-sm text-muted">{activeItem.note}</p>
               </div>
             </m.div>
           </m.div>

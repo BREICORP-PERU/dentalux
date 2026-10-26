@@ -30,12 +30,12 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl ?? "http://localhost:3000"),
   title: {
-    default: "DentaLux Clínica Dental | Dentista en Tingo María",
-    template: "%s | DentaLux Clínica Dental",
+    default: `${siteConfig.name} | Dentista en Tingo María`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
-    "DentaLux Clínica Dental",
+    siteConfig.name,
     "dentista en Tingo María",
     "clínica dental Tingo María",
     "odontología Tingo María",
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: siteConfig.locale,
     siteName: siteConfig.name,
-    title: "DentaLux Clínica Dental en Tingo María",
+    title: `${siteConfig.name} en Tingo María`,
     description: siteConfig.description,
     ...(siteUrl ? { url: siteUrl } : {}),
   },
   twitter: {
     card: "summary_large_image",
-    title: "DentaLux Clínica Dental en Tingo María",
+    title: `${siteConfig.name} en Tingo María`,
     description: siteConfig.description,
   },
   robots: {
@@ -82,7 +82,6 @@ const dentistSchema = {
     streetAddress: siteConfig.address.street,
     addressLocality: siteConfig.address.locality,
     addressRegion: siteConfig.address.region,
-    postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.countryCode,
   },
   geo: {

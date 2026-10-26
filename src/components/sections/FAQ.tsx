@@ -6,7 +6,7 @@ import { useId, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-const CATEGORIES = ["Todos", "Reservas", "Servicios", "Horarios", "Ubicacion", "Primera visita", "Pagos"];
+const CATEGORIES = ["Todos", ...Array.from(new Set(siteConfig.faqs.map((faq) => faq.category)))];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -42,7 +42,7 @@ export default function FAQ() {
                 de tu visita
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-muted">
-                Resolvemos tus dudas mas frecuentes sobre citas, tratamientos y nuestra clinica en Tingo Maria.
+                Respuestas basadas únicamente en la información confirmada para esta web.
               </p>
             </m.div>
 
@@ -52,12 +52,12 @@ export default function FAQ() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mt-10 rounded-3xl bg-ink p-7 text-white brand-shadow"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light mb-3">Otra pregunta?</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light mb-3">¿Otra pregunta?</p>
               <h3 className="font-heading text-2xl font-bold leading-snug">
-                Escribenos y te respondemos
+                Escríbenos mediante el canal oficial
               </h3>
               <p className="mt-3 leading-relaxed text-white/70 text-sm">
-                Nuestro equipo responde consultas sobre tratamientos, precios y disponibilidad de forma directa.
+                Consulta directamente la disponibilidad, el horario y cualquier tratamiento específico antes de acudir.
               </p>
               <a
                 href={siteConfig.reservations.url}
@@ -78,7 +78,7 @@ export default function FAQ() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-wrap gap-2 mb-8"
               role="group"
-              aria-label="Filtrar preguntas por categoria"
+              aria-label="Filtrar preguntas por categoría"
             >
               {CATEGORIES.map((cat) => (
                 <button

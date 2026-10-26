@@ -20,7 +20,7 @@ export default function BrandMark({ inverse = false, compact = false }: BrandMar
       >
         <Image
           src={dentaluxLogo}
-          alt="Logotipo oficial de DentaLux Clínica Dental"
+          alt={`Logotipo oficial de ${siteConfig.name}`}
           fill
           priority
           className="object-contain p-1"

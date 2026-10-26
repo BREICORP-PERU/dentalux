@@ -7,9 +7,9 @@ import { siteConfig } from "@/config/site";
 import Image from "next/image";
 
 const TEAM_VALUES = [
-  { title: "Atencion personalizada", desc: "Cada paciente recibe un plan de tratamiento adaptado a sus necesidades." },
-  { title: "Profesionales certificados", desc: "Nuestro equipo cuenta con formacion especializada y actualizacion continua." },
-  { title: "Ambiente de confianza", desc: "Un entorno tranquilo y acogedor para que te sientas comodo en cada visita." },
+  { title: "Perfiles profesionales", desc: "Los nombres y números de colegiatura se incorporarán cuando sean confirmados." },
+  { title: "Especialidades", desc: "Las especialidades se publicarán únicamente con validación directa de la clínica." },
+  { title: "Fotografías autorizadas", desc: "Este espacio está preparado para imágenes entregadas o aprobadas por DentaLux." },
 ];
 
 export default function Team() {
@@ -30,11 +30,11 @@ export default function Team() {
               Equipo profesional
             </span>
             <h2 id="team-title" className="font-heading text-4xl font-bold text-ink md:text-5xl leading-tight">
-              Un equipo dedicado a{" "}
-              <span className="text-brand-gradient">tu salud dental</span>
+              Perfiles que se publicarán con{" "}
+              <span className="text-brand-gradient">información validada</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted max-w-2xl mx-auto">
-              Profesionales comprometidos con brindarte la mejor experiencia odontologica en Tingo Maria.
+              No mostramos nombres, especialidades, fotografías ni certificaciones hasta recibir autorización expresa de DentaLux.
             </p>
           </m.div>
         </div>
@@ -84,8 +84,8 @@ export default function Team() {
             <UsersRound size={32} className="text-gold-dark" aria-hidden="true" />
           </div>
           <div className="flex-1 text-center sm:text-left">
-            <p className="font-heading text-xl font-bold text-ink">Listo para conocernos?</p>
-            <p className="mt-1 text-muted text-sm">Reserva tu primera consulta y vive la experiencia DentaLux.</p>
+            <p className="font-heading text-xl font-bold text-ink">¿Deseas consultar disponibilidad?</p>
+            <p className="mt-1 text-muted text-sm">Usa el canal oficial de reservas para coordinar directamente con la clínica.</p>
           </div>
           <a
             href={siteConfig.reservations.url}

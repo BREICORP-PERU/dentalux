@@ -1,21 +1,15 @@
 import { CalendarCheck, ExternalLink, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { siteConfig, socialLinks } from "@/config/site";
 import BrandMark from "./BrandMark";
 
 const navigation = [
   { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Galeria", href: "#galeria" },
+  { label: "Galería", href: "#galeria" },
   { label: "Equipo", href: "#equipo" },
   { label: "Preguntas", href: "#faq" },
-  { label: "Ubicacion", href: "#ubicacion" },
-];
-
-const socialLinks = [
-  { name: "Facebook", href: siteConfig.social.facebook },
-  { name: "Instagram", href: siteConfig.social.instagram },
-  { name: "TikTok", href: siteConfig.social.tiktok },
+  { label: "Ubicación", href: "#ubicacion" },
 ];
 
 export default function Footer() {
@@ -24,14 +18,14 @@ export default function Footer() {
       <div className="border-b border-white/8">
         <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold-light mb-1">Listo para empezar?</p>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold-light mb-1">¿Listo para empezar?</p>
             <h2 className="font-heading text-2xl font-bold text-white">Reserva tu cita hoy en DentaLux</h2>
           </div>
           <a
             href={siteConfig.reservations.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2.5 bg-gold-gradient text-white px-8 py-3.5 rounded-full font-bold hover:scale-105 transition-all duration-300 premium-shadow active:scale-95"
+            className="shrink-0 inline-flex items-center gap-2.5 bg-gold-gradient text-ink px-8 py-3.5 rounded-full font-bold hover:scale-105 transition-all duration-300 premium-shadow active:scale-95"
           >
             <CalendarCheck size={18} aria-hidden="true" />
             {siteConfig.reservations.label}
@@ -63,7 +57,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-gold-light mb-6">Navegacion</h2>
+            <h2 className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-gold-light mb-6">Navegación</h2>
             <ul className="grid grid-cols-2 gap-x-5 gap-y-3">
               {navigation.map((item) => (
                 <li key={item.href}>
@@ -82,7 +76,7 @@ export default function Footer() {
                 <MapPin className="mt-0.5 shrink-0 text-gold-light" size={18} aria-hidden="true" />
                 <span>{siteConfig.address.full}</span>
               </div>
-              {siteConfig.phone.display && (
+              {siteConfig.phone.status === "confirmed" && (
                 <div className="flex items-center gap-3 text-sm text-white/65">
                   <Phone className="shrink-0 text-gold-light" size={18} aria-hidden="true" />
                   <span>WhatsApp: {siteConfig.phone.display}</span>
@@ -106,7 +100,7 @@ export default function Footer() {
             {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
           </p>
           <p className="text-xs text-white/30">
-            Horario pendiente de confirmacion oficial. Consulta disponibilidad al reservar.
+            Horario pendiente de confirmación oficial. Consulta disponibilidad al reservar.
           </p>
         </div>
       </div>

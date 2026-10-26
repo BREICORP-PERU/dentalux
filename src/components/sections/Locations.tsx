@@ -28,11 +28,11 @@ export default function Locations() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-soft border border-gold/25 text-gold-dark text-xs font-bold uppercase tracking-[0.22em] mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
-              Ubicacion
+              Ubicación
             </span>
             <h2 id="location-title" className="font-heading text-4xl font-bold text-ink md:text-5xl leading-tight">
-              Encuentranos en{" "}
-              <span className="text-brand-gradient">Tingo Maria</span>
+              Encuéntranos en{" "}
+              <span className="text-brand-gradient">Tingo María</span>
             </h2>
             <p className="mt-6 text-lg text-muted">{siteConfig.address.full}</p>
           </m.div>
@@ -51,18 +51,18 @@ export default function Locations() {
                   <MapPin size={27} aria-hidden="true" />
                 </span>
                 <h3 className="font-heading text-3xl font-bold">{siteConfig.shortName}</h3>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light mt-1 mb-5">Clinica Dental</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light mt-1 mb-5">Clínica Dental</p>
                 <p className="leading-relaxed text-white/70">{siteConfig.address.full}</p>
 
                 <div className="mt-7 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                   <Clock3 className="mt-0.5 shrink-0 text-gold-light" size={20} aria-hidden="true" />
                   <div>
-                    <p className="font-semibold text-sm">Horario de atencion</p>
+                    <p className="font-semibold text-sm">Horario pendiente de confirmación</p>
                     <p className="mt-1 text-sm text-white/60">{siteConfig.hours.display}</p>
                   </div>
                 </div>
 
-                {siteConfig.phone.display && (
+                {siteConfig.phone.status === "confirmed" && (
                   <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                     <Phone className="shrink-0 text-gold-light" size={20} aria-hidden="true" />
                     <div>
@@ -96,7 +96,7 @@ export default function Locations() {
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10 active:scale-95"
                 >
                   <ExternalLink size={16} aria-hidden="true" />
-                  Como llegar
+                  Cómo llegar
                 </a>
                 <a
                   href={siteConfig.reservations.url}
