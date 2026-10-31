@@ -4,13 +4,8 @@ import {
   Activity,
   CalendarCheck,
   ChevronRight,
-  ClipboardList,
-  Droplets,
-  MessageCircle,
   Shield,
   Smile,
-  Sparkles,
-  Star,
 } from "lucide-react";
 import { m, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -18,123 +13,101 @@ import { siteConfig } from "@/config/site";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   smile: Smile,
-  sparkles: Sparkles,
   shield: Shield,
-  star: Star,
-  droplets: Droplets,
   activity: Activity,
-  message: MessageCircle,
-  calendar: CalendarCheck,
-  clipboard: ClipboardList,
 };
 
-const INSTITUTIONAL_STEPS = [
-  {
-    icon: "message",
-    title: "Cuéntanos qué necesitas",
-    description: "Inicia la conversación desde el enlace oficial de reservas.",
-  },
-  {
-    icon: "calendar",
-    title: "Solicita disponibilidad",
-    description: "Coordina una fecha directamente mediante el canal de DentaLux.",
-  },
-  {
-    icon: "clipboard",
-    title: "Confirma los detalles",
-    description: "Consulta el tratamiento, el horario y las indicaciones antes de acudir.",
-  },
-] as const;
-
 export default function Services() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const confirmedServices = siteConfig.services.filter((service) => service.status === "confirmed");
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardsRef, { once: true, margin: "-80px" });
+  const publicServices = siteConfig.services.filter(
+    (service) =>
+      service.status === "confirmed" &&
+      service.documentationStatus === "documented" &&
+      service.publicationStatus === "approved",
+  );
 
   return (
-    <section id="servicios" className="relative bg-white py-20 md:py-28 overflow-hidden" aria-labelledby="services-title">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gold-soft/50 blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gold-soft/30 blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" aria-hidden="true" />
+    <section id="servicios" className="relative overflow-hidden bg-white py-24 md:py-32" aria-labelledby="services-title">
+      <div className="pointer-events-none absolute -right-52 top-0 h-[520px] w-[520px] rounded-full border-[90px] border-gold-soft/80" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[460px] w-[460px] rounded-full bg-gold-soft/70 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" aria-hidden="true" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-soft border border-gold/25 text-gold-dark text-xs font-bold uppercase tracking-[0.22em] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
-            Atención y reservas
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold-soft px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-gold-dark">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold-dark" />
+            Atención odontológica
           </span>
-          <h2 id="services-title" className="font-heading text-4xl font-bold text-ink md:text-5xl leading-tight">
-            Un primer paso claro para{" "}
-            <span className="text-brand-gradient">solicitar tu cita</span>
+          <h2 id="services-title" className="font-heading text-4xl font-bold leading-[1.08] text-ink md:text-5xl lg:text-6xl">
+            Cuidado especializado para <span className="text-brand-gradient">cada sonrisa</span>
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted max-w-2xl mx-auto">
-            La lista oficial de tratamientos todavía está pendiente de validación. Puedes consultar tu necesidad directamente al reservar.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+            Conoce las áreas de atención informadas por DentaLux. Cada alternativa requiere una evaluación profesional y una planificación individual.
           </p>
         </div>
 
-        {/* Services grid */}
-        <div ref={ref} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {(confirmedServices.length > 0 ? confirmedServices : INSTITUTIONAL_STEPS).map((service, index) => {
+        <div ref={cardsRef} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {publicServices.map((service, index) => {
             const Icon = ICON_MAP[service.icon] ?? Smile;
             return (
-              <m.article
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-                className="group relative bg-white rounded-3xl border border-line p-8 brand-shadow hover:border-gold/50 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
-              >
-                {/* Hover gold accent background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-soft/0 to-gold-soft/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl" aria-hidden="true" />
-                
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-soft text-gold-dark group-hover:bg-gold group-hover:text-white transition-colors duration-300 mb-6">
-                    <Icon size={26} aria-hidden="true" />
-                  </div>
-
-                  {/* Number */}
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-dark/60 mb-2">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-
-                  <h3 className="font-heading text-xl font-bold text-ink mb-3 group-hover:text-gold-dark transition-colors duration-200">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted">
-                    {service.description}
-                  </p>
-
-                  {/* Hover CTA */}
-                  <div className="mt-6 flex items-center gap-1.5 text-xs font-bold text-gold-dark opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-                    <span>Consultar disponibilidad</span>
-                    <ChevronRight size={14} aria-hidden="true" />
-                  </div>
-                </div>
-              </m.article>
+                  <m.article
+                    key={service.title}
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: index * 0.07, ease: "easeOut" }}
+                    className="group relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 shadow-[0_24px_65px_-40px_rgba(17,17,17,0.42)] transition duration-300 hover:-translate-y-2 hover:border-gold/45 hover:shadow-[0_30px_72px_-36px_rgba(126,101,37,0.35)] md:p-9"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gold-gradient transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true" />
+                    <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-gold-soft opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
+                    <div className="relative z-10">
+                      <div className="mb-9 flex items-start justify-between">
+                        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-ink text-gold-light shadow-lg shadow-black/10 transition duration-300 group-hover:-rotate-3 group-hover:scale-105">
+                          <Icon size={26} aria-hidden="true" />
+                        </span>
+                        <span className="font-heading text-sm font-bold text-gold-dark/55">{String(index + 1).padStart(2, "0")}</span>
+                      </div>
+                      <h3 className="font-heading text-2xl font-bold text-ink">{service.title}</h3>
+                      <p className="mt-4 min-h-24 text-sm leading-relaxed text-muted">{service.description}</p>
+                      <details className="group/treatment mt-7 border-t border-line pt-5">
+                        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-xl text-sm font-bold text-gold-dark outline-none transition hover:text-ink focus-visible:ring-2 focus-visible:ring-gold [&::-webkit-details-marker]:hidden">
+                          Conocer tratamientos
+                          <ChevronRight size={16} className="shrink-0 transition-transform group-open/treatment:rotate-90" aria-hidden="true" />
+                        </summary>
+                        <ul className="mt-3 space-y-3 border-l border-gold/35 pl-4">
+                          {service.variants.map((variant) => (
+                            <li key={variant.title}>
+                              <p className="text-sm font-bold text-ink">{variant.title}</p>
+                              <p className="mt-1 text-xs leading-relaxed text-muted">{variant.description}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    </div>
+                  </m.article>
             );
           })}
         </div>
 
-        {/* Bottom CTA strip */}
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl bg-ink p-8 md:p-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light mb-2">Información pendiente</p>
-            <h3 className="font-heading text-2xl font-bold text-white">
-              Confirma directamente el tratamiento que necesitas
-            </h3>
+        <div className="mt-14 overflow-hidden rounded-[2rem] bg-ink shadow-[0_24px_70px_-35px_rgba(17,17,17,0.7)]">
+          <div className="relative flex flex-col items-start justify-between gap-7 px-7 py-8 sm:px-9 md:flex-row md:items-center md:px-11 md:py-10">
+            <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full border-[50px] border-gold/10" aria-hidden="true" />
+            <div className="relative max-w-2xl">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-gold-light">Canal oficial de reservas</p>
+              <h3 className="font-heading text-2xl font-bold text-white md:text-3xl">¿Quieres saber qué alternativa puede ajustarse a tu caso?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">Solicita una cita para recibir orientación y una evaluación profesional individual.</p>
+            </div>
+            <a
+              href={siteConfig.reservations.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-flex shrink-0 items-center gap-2.5 rounded-full bg-gold-gradient px-8 py-4 font-bold text-ink shadow-xl shadow-black/25 transition duration-300 hover:-translate-y-1 active:translate-y-0"
+            >
+              <CalendarCheck size={19} aria-hidden="true" />
+              {siteConfig.reservations.label}
+              <ChevronRight size={16} aria-hidden="true" />
+            </a>
           </div>
-          <a
-            href={siteConfig.reservations.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2.5 bg-gold-gradient text-ink px-8 py-3.5 rounded-full font-bold text-base hover:scale-105 transition-all duration-300 premium-shadow shadow-gold/20 active:scale-95"
-          >
-            <CalendarCheck size={18} aria-hidden="true" />
-            {siteConfig.reservations.label}
-            <ChevronRight size={16} aria-hidden="true" />
-          </a>
         </div>
       </div>
     </section>

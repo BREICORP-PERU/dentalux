@@ -1,10 +1,23 @@
 export type VerificationStatus = "confirmed" | "pending";
 
+export type DocumentationStatus = "documented" | "pending";
+
+export type PublicationStatus = "approved" | "pending";
+
+export type TreatmentVariant = {
+  title: string;
+  description: string;
+  documentationStatus: DocumentationStatus;
+};
+
 export type Service = {
   title: string;
   description: string;
   icon: string;
   status: VerificationStatus;
+  documentationStatus: DocumentationStatus;
+  publicationStatus: PublicationStatus;
+  variants: readonly TreatmentVariant[];
 };
 
 export type Specialist = {
@@ -83,6 +96,29 @@ export const siteConfig = {
     label: "Reservar cita",
     channel: "Canal oficial de reservas",
   },
+  institutional: {
+    documentationStatus: "documented" as const,
+    publicationStatus: "approved" as const,
+    trajectory: {
+      years: 7,
+      claim: "Más de 7 años cuidando sonrisas con excelencia",
+      lead: "Más de 7 años",
+      focus: "cuidando sonrisas con excelencia",
+    },
+    presentation:
+      "DentaLux se dedica al cuidado de la salud bucal mediante una atención odontológica integral, profesional y personalizada.",
+    philosophy:
+      "Su filosofía combina experiencia profesional, tecnología moderna y trato humano, priorizando la salud, la comodidad y el bienestar de sus pacientes.",
+    values: ["Experiencia", "Tecnología", "Compromiso", "Innovación", "Transparencia", "Confianza"],
+    mission: {
+      status: "pending" as const,
+      text: null,
+    },
+    vision: {
+      status: "pending" as const,
+      text: null,
+    },
+  },
   hours: {
     status: "pending" as VerificationStatus,
     publicReference: "Lunes a sábado, 8:00–13:00 y 15:00–20:00",
@@ -101,42 +137,104 @@ export const siteConfig = {
   },
   services: [
     {
-      title: "Ortodoncia",
-      description: "Tratamiento pendiente de validación por DentaLux.",
-      icon: "smile",
-      status: "pending" as const,
-    },
-    {
-      title: "Blanqueamiento Dental",
-      description: "Tratamiento pendiente de validación por DentaLux.",
-      icon: "sparkles",
-      status: "pending" as const,
-    },
-    {
       title: "Implantes Dentales",
-      description: "Tratamiento pendiente de validación por DentaLux.",
+      description:
+        "Alternativas de rehabilitación oral orientadas a recuperar la funcionalidad y la estética de la sonrisa mediante una planificación personalizada.",
       icon: "shield",
-      status: "pending" as const,
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Implantes unitarios",
+          description: "Sustituyen una pieza dental perdida mediante un implante que sirve de soporte para una corona.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Implantes múltiples",
+          description: "Permiten reemplazar varias piezas dentales mediante implantes que soportan coronas o puentes.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Prótesis híbridas sobre implantes",
+          description: "Rehabilitación fija para pacientes que han perdido todos o la mayoría de los dientes de una arcada.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Sobredentaduras",
+          description: "Prótesis removibles sostenidas mediante implantes para aportar mayor retención y estabilidad.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Injerto óseo",
+          description: "Procedimiento para recuperar o aumentar el volumen de hueso cuando es insuficiente para determinados tratamientos con implantes.",
+          documentationStatus: "documented" as const,
+        },
+      ],
     },
     {
-      title: "Carillas Dentales",
-      description: "Tratamiento pendiente de validación por DentaLux.",
-      icon: "star",
-      status: "pending" as const,
+      title: "Ortodoncia",
+      description:
+        "Tratamientos para corregir la posición dental y las alteraciones de la mordida mediante una planificación individualizada.",
+      icon: "smile",
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Brackets convencionales",
+          description: "Alternativa de ortodoncia documentada por DentaLux y sujeta a planificación individualizada.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Brackets de zafiro",
+          description: "Alternativa de ortodoncia documentada por DentaLux y sujeta a planificación individualizada.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Brackets autoligados metálicos",
+          description: "Alternativa de ortodoncia documentada por DentaLux y sujeta a planificación individualizada.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Brackets autoligados estéticos",
+          description: "Alternativa de ortodoncia documentada por DentaLux y sujeta a planificación individualizada.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Alineadores transparentes",
+          description: "Alternativa de ortodoncia documentada por DentaLux y sujeta a planificación individualizada.",
+          documentationStatus: "documented" as const,
+        },
+      ],
     },
     {
-      title: "Limpieza Dental",
-      description: "Tratamiento pendiente de validación por DentaLux.",
-      icon: "droplets",
-      status: "pending" as const,
-    },
-    {
-      title: "Endodoncia",
-      description: "Tratamiento pendiente de validación por DentaLux.",
+      title: "Periodoncia",
+      description:
+        "Atención orientada a prevenir, diagnosticar y tratar enfermedades de las encías y de los tejidos de soporte dental.",
       icon: "activity",
-      status: "pending" as const,
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Gingivitis",
+          description: "Atención periodontal para casos de gingivitis, según la evaluación profesional de cada paciente.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Periodontitis",
+          description: "Atención periodontal para casos de periodontitis, de acuerdo con una evaluación individual.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Limpieza dental profesional",
+          description: "Procedimiento profesional de higiene bucal incluido en la atención periodontal documentada.",
+          documentationStatus: "documented" as const,
+        },
+      ],
     },
-  ] as Service[],
+  ] satisfies Service[],
   specialists: [] as Specialist[],
   gallery: [
     {
