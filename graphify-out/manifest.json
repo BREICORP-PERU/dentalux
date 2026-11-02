@@ -1,0 +1,278 @@
+{
+  "eslint.config.mjs": {
+    "mtime": 1777729220.0,
+    "seen": 1793642033.9196508,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1792778258.41217,
+    "seen": 1793642033.9196613,
+    "ast_hash": "b65b12e8cba0560e4aec2720e227b420",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1792779214.2960453,
+    "seen": 1793642033.9196668,
+    "ast_hash": "7f0bf5c4ef2b67fc05c68d20ea624640",
+    "semantic_hash": ""
+  },
+  "postcss.config.mjs": {
+    "mtime": 1777729220.0,
+    "seen": 1793642033.9196699,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "src/app/layout.tsx": {
+    "mtime": 1793027692.0944986,
+    "seen": 1793642033.9196727,
+    "ast_hash": "2af6ad89e831011d36ada269aa4550a5",
+    "semantic_hash": ""
+  },
+  "src/app/manifest.ts": {
+    "mtime": 1792852730.668739,
+    "seen": 1793642033.9196756,
+    "ast_hash": "c3f0bd8c410c0ecc50c704367658db9f",
+    "semantic_hash": ""
+  },
+  "src/app/opengraph-image.tsx": {
+    "mtime": 1793027693.3351219,
+    "seen": 1793642033.9196784,
+    "ast_hash": "b2c45af107ba62cae971034d4046760f",
+    "semantic_hash": ""
+  },
+  "src/app/page.tsx": {
+    "mtime": 1793030747.8225484,
+    "seen": 1793642033.9196808,
+    "ast_hash": "07ea26e3cd19c92f3c5f51e40b4a60fc",
+    "semantic_hash": ""
+  },
+  "src/app/robots.ts": {
+    "mtime": 1792778254.6533008,
+    "seen": 1793642033.919683,
+    "ast_hash": "9783f57458631cf459d3101bc06d1c47",
+    "semantic_hash": ""
+  },
+  "src/app/sitemap.ts": {
+    "mtime": 1792778256.5001292,
+    "seen": 1793642033.9196854,
+    "ast_hash": "62ae7a724d773f1ccfda504ad402bd5b",
+    "semantic_hash": ""
+  },
+  "src/app/twitter-image.tsx": {
+    "mtime": 1792778213.040073,
+    "seen": 1793642033.9196875,
+    "ast_hash": "59737e648e5d5f251bcfd4d5ab50c5c1",
+    "semantic_hash": ""
+  },
+  "src/components/sections/About.tsx": {
+    "mtime": 1793640327.5890186,
+    "seen": 1793642033.9196906,
+    "ast_hash": "6cc5e218b639da275409f6cc96cb57b1",
+    "semantic_hash": ""
+  },
+  "src/components/sections/FAQ.tsx": {
+    "mtime": 1793027279.4907572,
+    "seen": 1793642033.9196928,
+    "ast_hash": "5f373c39af1077f1ee236b79f63068e2",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Gallery.tsx": {
+    "mtime": 1793640327.726336,
+    "seen": 1793642033.9196951,
+    "ast_hash": "1e7667b039f8402be3fcc44178d6f879",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Hero.tsx": {
+    "mtime": 1793029413.5776038,
+    "seen": 1793642033.9196978,
+    "ast_hash": "3147177a14416255c699d4178f6c367f",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Locations.tsx": {
+    "mtime": 1793638653.1105986,
+    "seen": 1793642033.9197,
+    "ast_hash": "0bbf29bef1b27092bb3f6557c2e473e5",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Services.tsx": {
+    "mtime": 1793638653.2655396,
+    "seen": 1793642033.9197023,
+    "ast_hash": "1f1bfb323b868e8728df1d41683c8d80",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Team.tsx": {
+    "mtime": 1793027259.357478,
+    "seen": 1793642033.9197044,
+    "ast_hash": "6ffcba9b2241a345cf4f41e22c69e3fc",
+    "semantic_hash": ""
+  },
+  "src/components/sections/Testimonials.tsx": {
+    "mtime": 1793027223.8138123,
+    "seen": 1793642033.9197066,
+    "ast_hash": "7dc0486107bbe47911817c3313d45bff",
+    "semantic_hash": ""
+  },
+  "src/components/ui/BrandMark.tsx": {
+    "mtime": 1793027694.5195217,
+    "seen": 1793642033.919709,
+    "ast_hash": "dbf603781c9170c4c978678d88be148d",
+    "semantic_hash": ""
+  },
+  "src/components/ui/Footer.tsx": {
+    "mtime": 1793642026.6723936,
+    "seen": 1793642033.919711,
+    "ast_hash": "f3fd37d2c7a80653e559fe3c18f31d02",
+    "semantic_hash": ""
+  },
+  "src/components/ui/MotionProvider.tsx": {
+    "mtime": 1784211208.0,
+    "seen": 1793642033.9197133,
+    "ast_hash": "b0fb909a2a28cc445766bec111a8eb92",
+    "semantic_hash": ""
+  },
+  "src/components/ui/Navbar.tsx": {
+    "mtime": 1793029620.99052,
+    "seen": 1793642033.9197164,
+    "ast_hash": "30275d0999c686715f62266cea2a34b3",
+    "semantic_hash": ""
+  },
+  "src/components/ui/SocialIcons.tsx": {
+    "mtime": 1793638636.7429776,
+    "seen": 1793642033.9197187,
+    "ast_hash": "61e7f33fd2de6662865c27dd822d8927",
+    "semantic_hash": ""
+  },
+  "src/components/ui/WhatsAppButton.tsx": {
+    "mtime": 1793641376.0426898,
+    "seen": 1793642033.9197206,
+    "ast_hash": "710f58c14002de2d5f081c1ec12203e7",
+    "semantic_hash": ""
+  },
+  "src/config/site.ts": {
+    "mtime": 1793639270.9076564,
+    "seen": 1793642033.919723,
+    "ast_hash": "d2ec441319ba719ec201c50e73062c98",
+    "semantic_hash": ""
+  },
+  "src/lib/utils.ts": {
+    "mtime": 1777730524.0,
+    "seen": 1793642033.9197254,
+    "ast_hash": "d9837f38cc05303254571985e3164050",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1777730274.0,
+    "seen": 1793642033.9197276,
+    "ast_hash": "ee17fd1c97c735e9f3564e3f5251f125",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1792852496.0997343,
+    "seen": 1793642033.91973,
+    "ast_hash": "c98dbebb744eadc1acc4b9f58bfe0f42",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1777730392.0,
+    "seen": 1793642033.9197323,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792778429.278272,
+    "seen": 1793642033.9197345,
+    "ast_hash": "1e433570bc6cee45a3ae304a31841646",
+    "semantic_hash": ""
+  },
+  "public/about-dentalux-referential.webp": {
+    "mtime": 1793030580.633,
+    "seen": 1793642033.919737,
+    "ast_hash": "8a173e9a9333a2fdd6b2c4ef80b6eb9d",
+    "semantic_hash": ""
+  },
+  "public/about-dentalux.webp": {
+    "mtime": 1793639369.2867143,
+    "seen": 1793642033.9197395,
+    "ast_hash": "af7a1e32d0bdd8cfff70555e229413da",
+    "semantic_hash": ""
+  },
+  "public/dentalux-care.svg": {
+    "mtime": 1792852912.2574267,
+    "seen": 1793642033.9197416,
+    "ast_hash": "0f6ac34372081086fd4220688f232723",
+    "semantic_hash": ""
+  },
+  "public/dentalux-space.svg": {
+    "mtime": 1792852910.985619,
+    "seen": 1793642033.9197438,
+    "ast_hash": "bea2f8f84d259fdc90e833b05282b933",
+    "semantic_hash": ""
+  },
+  "public/hero-dentalux-referential.webp": {
+    "mtime": 1793028486.566,
+    "seen": 1793642033.9197462,
+    "ast_hash": "c6ab9f1880567ae553012201d86b1ef5",
+    "semantic_hash": ""
+  },
+  "public/hero-dentalux.jpg": {
+    "mtime": 1792860440.837966,
+    "seen": 1793642033.9197483,
+    "ast_hash": "d09ecc0210a05d1b16208d9b9c2467eb",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/blanqueamiento.webp": {
+    "mtime": 1793636112.3831418,
+    "seen": 1793642033.9197507,
+    "ast_hash": "6c73371af3c65ec52e9fdeb89021d862",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/dise\u00f1osonrisa.webp": {
+    "mtime": 1793636120.582371,
+    "seen": 1793642033.9197543,
+    "ast_hash": "d6da892f2f6cffcd3584cd78650ab4bb",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/gingivoplastia.webp": {
+    "mtime": 1793636120.4658089,
+    "seen": 1793642033.9197567,
+    "ast_hash": "b641d6a331177e7f10e388562dada15c",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/implante.webp": {
+    "mtime": 1793636150.3082368,
+    "seen": 1793642033.9197588,
+    "ast_hash": "d8bbe32a637db6b80c859a9e0cffa792",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/ortodoncia.webp": {
+    "mtime": 1793636120.5260751,
+    "seen": 1793642033.9197612,
+    "ast_hash": "69cc6f307ff8fcc2831ee3f138939898",
+    "semantic_hash": ""
+  },
+  "public/tratamientos/ortopedia.webp": {
+    "mtime": 1793636120.6210063,
+    "seen": 1793642033.9197636,
+    "ast_hash": "67ac7b0f41ad4a9e5fe8bc6e17f36272",
+    "semantic_hash": ""
+  },
+  "src/app/dentaluxlogo.png": {
+    "mtime": 1792778034.3033683,
+    "seen": 1793642033.9197664,
+    "ast_hash": "2c1bef1d1749ea60e9c527b60fe0f532",
+    "semantic_hash": ""
+  },
+  "src/app/icon.svg": {
+    "mtime": 1792852931.0387418,
+    "seen": 1793642033.9197688,
+    "ast_hash": "7ba790e3f38dc0ff9ca6a47e98c8e014",
+    "semantic_hash": ""
+  },
+  "package-lock.json": {
+    "mtime": 1792851583.4846463,
+    "seen": 1793642033.9197712,
+    "ast_hash": "764f3b31d40f7593adaa896e72fe730e",
+    "semantic_hash": ""
+  }
+}

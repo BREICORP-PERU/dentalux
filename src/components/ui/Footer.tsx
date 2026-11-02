@@ -108,8 +108,16 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/8 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-white/40">
-            {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
+          <p className="text-xs leading-relaxed text-white/40">
+            © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados. | Desarrollado por{" "}
+            <a
+              href="https://breicorp.com.pe/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-gold-light transition-colors hover:text-gold"
+            >
+              BREICORP
+            </a>
           </p>
           <p className="text-xs text-white/30">
             Horario pendiente de confirmación oficial. Consulta disponibilidad al reservar.
