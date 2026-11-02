@@ -38,6 +38,10 @@ yarn-error.log*
 /.backups/
 /_legacy/
 
+# development artifacts, screenshots and temporary test evidence
+/artifacts/
+/tmp/
+
 # vercel
 .vercel
 

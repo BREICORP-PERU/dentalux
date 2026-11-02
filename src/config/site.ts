@@ -12,8 +12,11 @@ export type TreatmentVariant = {
 
 export type Service = {
   title: string;
+  category?: string;
+  badge?: string;
   description: string;
   icon: string;
+  image: string;
   status: VerificationStatus;
   documentationStatus: DocumentationStatus;
   publicationStatus: PublicationStatus;
@@ -33,6 +36,7 @@ export type GalleryItem = {
   alt: string;
   label: string;
   note: string;
+  category?: string;
   span?: "wide" | "normal";
 };
 
@@ -138,9 +142,12 @@ export const siteConfig = {
   services: [
     {
       title: "Implantes Dentales",
+      category: "Rehabilitación Oral",
+      badge: "Rehabilitación",
       description:
         "Alternativas de rehabilitación oral orientadas a recuperar la funcionalidad y la estética de la sonrisa mediante una planificación personalizada.",
       icon: "shield",
+      image: "/tratamientos/implante.webp",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
@@ -174,9 +181,12 @@ export const siteConfig = {
     },
     {
       title: "Ortodoncia",
+      category: "Alineación y Mordida",
+      badge: "Alineación",
       description:
         "Tratamientos para corregir la posición dental y las alteraciones de la mordida mediante una planificación individualizada.",
       icon: "smile",
+      image: "/tratamientos/ortodoncia.webp",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
@@ -210,9 +220,12 @@ export const siteConfig = {
     },
     {
       title: "Periodoncia",
+      category: "Salud Gingival",
+      badge: "Salud de Encías",
       description:
         "Atención orientada a prevenir, diagnosticar y tratar enfermedades de las encías y de los tejidos de soporte dental.",
       icon: "activity",
+      image: "/tratamientos/gingivoplastia.webp",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
@@ -234,24 +247,148 @@ export const siteConfig = {
         },
       ],
     },
+    {
+      title: "Blanqueamiento",
+      category: "Estética Dental",
+      badge: "Estética",
+      description:
+        "Procedimiento estético orientado a aclarar la tonalidad dental y devolver el brillo natural a tu sonrisa bajo supervisión profesional.",
+      icon: "sparkles",
+      image: "/tratamientos/blanqueamiento.webp",
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Blanqueamiento en clínica",
+          description: "Protocolo clínico supervisado con activación lumínica para resultados visibles y seguros.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Aclaramiento ambulatorio",
+          description: "Tratamiento guiado por el especialista mediante férulas personalizadas para uso en casa.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Control y mantenimiento",
+          description: "Recomendaciones y pautas preventivas para preservar la luminosidad del esmalte dental.",
+          documentationStatus: "documented" as const,
+        },
+      ],
+    },
+    {
+      title: "Diseño de sonrisa",
+      category: "Armonización Dental",
+      badge: "Armonización",
+      description:
+        "Planificación estética integral que armoniza forma, tamaño, proporción y color dental de acuerdo con la fisonomía facial del paciente.",
+      icon: "palette",
+      image: "/tratamientos/diseñosonrisa.webp",
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Evaluación estética personalizada",
+          description: "Estudio minucioso de la línea de la sonrisa, contorno gingival y proporción dental.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Carillas y microcarillas",
+          description: "Soluciones estéticas conservadoras para corregir anomalías de forma, color y espaciado.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Contorneado cosmético",
+          description: "Ajuste delicado y conservador de bordes para lograr equilibrio y simetría.",
+          documentationStatus: "documented" as const,
+        },
+      ],
+    },
+    {
+      title: "Ortopedia",
+      category: "Desarrollo y Prevención",
+      badge: "Ortopedia Dentofacial",
+      description:
+        "Atención interceptiva orientada a guiar el crecimiento armónico de los maxilares y prevenir discrepancias esqueléticas en etapas tempranas.",
+      icon: "compass",
+      image: "/tratamientos/ortopedia.webp",
+      status: "confirmed" as const,
+      documentationStatus: "documented" as const,
+      publicationStatus: "approved" as const,
+      variants: [
+        {
+          title: "Ortopedia funcional",
+          description: "Aparatología diseñada para modular y estimular el crecimiento adecuado de los huesos maxilares.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Corrección interceptiva",
+          description: "Detección y tratamiento oportuno de alteraciones de la mordida y discrepancias de desarrollo.",
+          documentationStatus: "documented" as const,
+        },
+        {
+          title: "Guía de erupción dental",
+          description: "Supervisión del recambio dentario para optimizar la alineación y el espacio disponible.",
+          documentationStatus: "documented" as const,
+        },
+      ],
+    },
   ] satisfies Service[],
   specialists: [] as Specialist[],
+  // Galería de tratamientos de DentaLux
   gallery: [
     {
-      src: "/dentalux-space.svg",
-      alt: "Ilustración provisional de un espacio para la futura galería de DentaLux",
-      label: "Espacio para fotografías de la clínica",
-      note: "Ilustración provisional; fotografía auténtica pendiente de aprobación.",
+      src: "/tratamientos/implante.webp",
+      alt: "Rehabilitación con implantes dentales en DentaLux",
+      label: "Implantes Dentales",
+      category: "Rehabilitación Oral",
+      note: "Alternativa de rehabilitación fija para recuperar la función masticatoria y la estética de la sonrisa.",
       span: "wide" as const,
     },
     {
-      src: "/dentalux-care.svg",
-      alt: "Ilustración provisional sobre orientación para solicitar una cita en DentaLux",
-      label: "Orientación y reservas",
-      note: "Ilustración provisional; material fotográfico pendiente de aprobación.",
+      src: "/tratamientos/ortodoncia.webp",
+      alt: "Tratamiento de ortodoncia y alineación dental en DentaLux",
+      label: "Ortodoncia y Brackets",
+      category: "Alineación y Mordida",
+      note: "Corrección de la posición dental y de la mordida mediante planificación individualizada.",
+      span: "normal" as const,
+    },
+    {
+      src: "/tratamientos/gingivoplastia.webp",
+      alt: "Cuidado periodontal y salud gingival en DentaLux",
+      label: "Periodoncia y Encías",
+      category: "Salud Gingival",
+      note: "Atención orientada a la salud de las encías y los tejidos de soporte dental.",
+      span: "normal" as const,
+    },
+    {
+      src: "/tratamientos/blanqueamiento.webp",
+      alt: "Tratamiento de blanqueamiento dental en DentaLux",
+      label: "Blanqueamiento Dental",
+      category: "Estética Dental",
+      note: "Procedimiento profesional supervisado para aclarar la tonalidad y devolver luminosidad al esmalte.",
+      span: "normal" as const,
+    },
+    {
+      src: "/tratamientos/ortopedia.webp",
+      alt: "Ortopedia maxilar y atención preventiva en DentaLux",
+      label: "Ortopedia Maxilar",
+      category: "Desarrollo y Prevención",
+      note: "Atención preventiva orientada a guiar el desarrollo óseo maxilofacial en etapas de crecimiento.",
+      span: "normal" as const,
+    },
+    {
+      src: "/tratamientos/diseñosonrisa.webp",
+      alt: "Diseño de sonrisa y armonización estética en DentaLux",
+      label: "Diseño de Sonrisa",
+      category: "Armonización Facial",
+      note: "Planificación estética integral considerando las proporciones faciales y la simetría de la sonrisa.",
       span: "wide" as const,
     },
   ] satisfies GalleryItem[],
+  // Espacio preparado para futura galería independiente de instalaciones y profesionales
+  facilitiesGallery: [] as GalleryItem[],
   faqs: [
     {
       question: "¿Cómo puedo reservar una cita en DentaLux?",

@@ -4,11 +4,12 @@ import { m, useInView } from "framer-motion";
 import { CalendarCheck, Clock3, ExternalLink, MapPin, Phone } from "lucide-react";
 import { useRef } from "react";
 import { siteConfig } from "@/config/site";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/SocialIcons";
 
 const SOCIAL_LINKS = [
-  { name: "Facebook", href: siteConfig.social.facebook, label: "fb" },
-  { name: "Instagram", href: siteConfig.social.instagram, label: "ig" },
-  { name: "TikTok", href: siteConfig.social.tiktok, label: "tt" },
+  { name: "Facebook", href: siteConfig.social.facebook, icon: FacebookIcon },
+  { name: "Instagram", href: siteConfig.social.instagram, icon: InstagramIcon },
+  { name: "TikTok", href: siteConfig.social.tiktok, icon: TikTokIcon },
 ];
 
 export default function Locations() {
@@ -72,19 +73,25 @@ export default function Locations() {
                   </div>
                 )}
 
-                <div className="mt-7 flex gap-2">
-                  {SOCIAL_LINKS.map(({ name, href, label }) => (
-                    <a
-                      key={name}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`DentaLux en ${name}`}
-                      className="inline-flex items-center px-3 py-2 rounded-xl border border-white/15 text-xs font-bold text-white/50 hover:border-gold hover:text-gold transition-colors uppercase tracking-wider"
-                    >
-                      {label}
-                    </a>
-                  ))}
+                <div className="mt-7">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-gold-light/80">
+                    Síguenos en redes
+                  </p>
+                  <div className="flex items-center gap-3">
+                    {SOCIAL_LINKS.map(({ name, href, icon: Icon }) => (
+                      <a
+                        key={name}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`DentaLux en ${name}`}
+                        title={`Visitar ${name} de DentaLux`}
+                        className="group grid h-11 w-11 place-items-center rounded-2xl border border-white/15 bg-white/5 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                      >
+                        <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
 

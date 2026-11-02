@@ -1,7 +1,14 @@
-import { CalendarCheck, ExternalLink, MapPin, Phone } from "lucide-react";
+import { CalendarCheck, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { siteConfig, socialLinks } from "@/config/site";
 import BrandMark from "./BrandMark";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "./SocialIcons";
+
+const SOCIAL_ICON_MAP: Record<string, React.ElementType> = {
+  Facebook: FacebookIcon,
+  Instagram: InstagramIcon,
+  TikTok: TikTokIcon,
+};
 
 const navigation = [
   { label: "Servicios", href: "#servicios" },
@@ -40,19 +47,24 @@ export default function Footer() {
               <BrandMark inverse />
             </Link>
             <p className="mt-6 max-w-md leading-relaxed text-white/60 text-sm">{siteConfig.description}</p>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 px-4 py-2 text-xs font-bold text-white/50 hover:border-gold hover:text-gold transition-colors"
-                >
-                  {social.name}
-                  <ExternalLink size={11} aria-hidden="true" />
-                </a>
-              ))}
+            <div className="mt-7 flex items-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = SOCIAL_ICON_MAP[social.name];
+                if (!Icon) return null;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`DentaLux en ${social.name}`}
+                    title={`Visitar ${social.name} de DentaLux`}
+                    className="group grid h-11 w-11 place-items-center rounded-2xl border border-white/15 bg-white/5 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                  >
+                    <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

@@ -26,17 +26,12 @@ export default function About() {
             <div className="absolute -left-4 -top-4 h-full w-full rounded-[2.25rem] border border-gold/35" aria-hidden="true" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] bg-ink shadow-[0_34px_85px_-42px_rgba(17,17,17,0.65)]">
               <Image
-                src="/about-dentalux-referential.webp"
-                alt="Imagen referencial de una conversación sobre atención odontológica"
+                src="/about-dentalux.webp"
+                alt="Compromiso profesional y atención clínica en DentaLux Clínica Dental"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 46vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-transparent to-black/5" aria-hidden="true" />
-              <div className="absolute inset-x-5 bottom-5 rounded-2xl border border-white/15 bg-black/45 p-4 text-white backdrop-blur-md sm:inset-x-7 sm:bottom-7">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-light">Imagen referencial</p>
-                <p className="mt-1.5 text-xs leading-relaxed text-white/70">No corresponde a la sede, al personal ni a pacientes de DentaLux.</p>
-              </div>
             </div>
 
             <div className="relative ml-auto mt-4 w-fit rounded-2xl border border-line bg-white p-4 shadow-[0_20px_55px_-28px_rgba(17,17,17,0.4)] sm:absolute sm:-bottom-7 sm:-right-6 sm:mt-0 sm:p-5">
