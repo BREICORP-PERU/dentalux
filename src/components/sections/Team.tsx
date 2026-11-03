@@ -1,20 +1,17 @@
 "use client";
 
 import { m, useInView } from "framer-motion";
-import { Star, UserRoundCheck, UsersRound } from "lucide-react";
+import { UserRoundCheck, UsersRound } from "lucide-react";
 import { useRef } from "react";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
 
-const TEAM_VALUES = [
-  { title: "Perfiles profesionales", desc: "Los nombres y números de colegiatura se incorporarán cuando sean confirmados." },
-  { title: "Especialidades", desc: "Las especialidades se publicarán únicamente con validación directa de la clínica." },
-  { title: "Fotografías autorizadas", desc: "Este espacio está preparado para imágenes entregadas o aprobadas por DentaLux." },
-];
-
 export default function Team() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  // No renderizar la sección si no hay especialistas confirmados
+  if (siteConfig.specialists.length === 0) return null;
 
   return (
     <section id="equipo" className="relative bg-white py-20 md:py-28 overflow-hidden" aria-labelledby="team-title">
@@ -30,49 +27,26 @@ export default function Team() {
               Equipo profesional
             </span>
             <h2 id="team-title" className="font-heading text-4xl font-bold text-ink md:text-5xl leading-tight">
-              Perfiles que se publicarán con{" "}
-              <span className="text-brand-gradient">información validada</span>
+              Nuestro equipo de{" "}
+              <span className="text-brand-gradient">especialistas</span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted max-w-2xl mx-auto">
-              No mostramos nombres, especialidades, fotografías ni certificaciones hasta recibir autorización expresa de DentaLux.
-            </p>
           </m.div>
         </div>
 
-        {siteConfig.specialists.length > 0 ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {siteConfig.specialists.map((specialist) => (
-              <article key={specialist.name} className="overflow-hidden rounded-3xl border border-line bg-white brand-shadow hover:-translate-y-1 transition-transform duration-300">
-                <div className="relative aspect-[4/5]">
-                  <Image src={specialist.image} alt={specialist.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-                </div>
-                <div className="p-7">
-                  <h3 className="font-heading text-2xl font-bold text-ink">{specialist.name}</h3>
-                  <p className="mt-1 font-semibold text-gold-dark">{specialist.role}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted">{specialist.bio}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {TEAM_VALUES.map(({ title, desc }, index) => (
-              <m.div
-                key={title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-3xl border border-line bg-surface p-8 brand-shadow"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-gold-soft flex items-center justify-center mb-6">
-                  <Star size={22} className="text-gold-dark" aria-hidden="true" />
-                </div>
-                <h3 className="font-heading text-xl font-bold text-ink mb-3">{title}</h3>
-                <p className="text-sm leading-relaxed text-muted">{desc}</p>
-              </m.div>
-            ))}
-          </div>
-        )}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {siteConfig.specialists.map((specialist) => (
+            <article key={specialist.name} className="overflow-hidden rounded-3xl border border-line bg-white brand-shadow hover:-translate-y-1 transition-transform duration-300">
+              <div className="relative aspect-[4/5]">
+                <Image src={specialist.image} alt={specialist.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
+              <div className="p-7">
+                <h3 className="font-heading text-2xl font-bold text-ink">{specialist.name}</h3>
+                <p className="mt-1 font-semibold text-gold-dark">{specialist.role}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted">{specialist.bio}</p>
+              </div>
+            </article>
+          ))}
+        </div>
 
         <m.div
           initial={{ opacity: 0, y: 20 }}

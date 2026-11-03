@@ -57,6 +57,13 @@ export type FaqItem = {
 const GOOGLE_MAP_EMBED =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d246.0883794176174!2d-76.00107762849078!3d-9.296528942389745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a6413fc777b68f%3A0x45fa6947ec8ff023!2sDentaLux%20Cl%C3%ADnica%20Dental!5e0!3m2!1ses-419!2spe!4v1792777229003!5m2!1ses-419!2spe";
 
+const DENTALUX_ADDRESS = {
+  street: "Jirón Pucallpa N.° 245",
+  short: "Jr. Pucallpa 245",
+  intermediate: "Jr. Pucallpa N.° 245, Tingo María",
+  full: "Jirón Pucallpa N.° 245, Tingo María, Huánuco, Perú",
+} as const;
+
 export const siteConfig = {
   name: "DentaLux Clínica Dental",
   shortName: "DentaLux",
@@ -81,12 +88,11 @@ export const siteConfig = {
   },
   address: {
     status: "confirmed" as const,
-    street: "Pucallpa 245",
+    ...DENTALUX_ADDRESS,
     locality: "Tingo María",
     region: "Huánuco",
     country: "Perú",
     countryCode: "PE",
-    full: "Pucallpa 245, Tingo María, Huánuco, Perú",
   },
   phone: {
     status: "pending" as VerificationStatus,
@@ -390,29 +396,80 @@ export const siteConfig = {
   // Espacio preparado para futura galería independiente de instalaciones y profesionales
   facilitiesGallery: [] as GalleryItem[],
   faqs: [
+    // ── Implantes dentales ───────────────────────────────────────────────────
+    {
+      question: "¿Qué tipos de implantes dentales ofrece DentaLux?",
+      answer:
+        "DentaLux trabaja con distintas soluciones de rehabilitación oral según la situación de cada paciente: implantes unitarios para reponer una sola pieza, implantes múltiples cuando se han perdido varias, prótesis híbridas fijas para rehabilitaciones completas de arcada, sobredentaduras retenidas por implantes que ofrecen mayor estabilidad que las prótesis convencionales, e injertos óseos cuando el volumen de hueso disponible requiere regeneración previa al implante. El tratamiento adecuado se determina en una evaluación clínica personalizada.",
+      category: "Implantes",
+    },
+    {
+      question: "¿Cuándo se necesita un injerto óseo antes de colocar un implante?",
+      answer:
+        "El injerto óseo se indica cuando la cantidad o densidad de hueso en la zona donde se planea el implante es insuficiente para garantizar su estabilidad a largo plazo. Factores como la pérdida dental antigua, la enfermedad periodontal o extracciones sin rehabilitación inmediata pueden reducir el volumen óseo. La necesidad de injerto se evalúa mediante exploración clínica e imagenología antes de planificar el tratamiento.",
+      category: "Implantes",
+    },
+    {
+      question: "¿En qué se diferencian una prótesis híbrida y una sobredentadura?",
+      answer:
+        "La prótesis híbrida es una rehabilitación fija, atornillada sobre implantes, que el paciente no retira; está indicada en quienes han perdido todos o la mayoría de los dientes de una arcada y buscan una solución estable y funcional. La sobredentadura es removible y se retiene mediante implantes mediante sistemas de anclaje, ofreciendo mayor comodidad y estabilidad respecto a una prótesis convencional pero con posibilidad de retirarla para su higiene. El especialista determinará cuál se ajusta mejor a cada caso.",
+      category: "Implantes",
+    },
+    // ── Ortodoncia ───────────────────────────────────────────────────────────
+    {
+      question: "¿Qué modalidades de ortodoncia están disponibles en DentaLux?",
+      answer:
+        "DentaLux ofrece tratamientos de ortodoncia con brackets convencionales de metal, brackets estéticos de zafiro que se mimetizan con el color del diente, sistemas autoligados que reducen la fricción y pueden acortar algunos tiempos de tratamiento, y alineadores transparentes removibles para casos seleccionados. La indicación depende de la complejidad del caso, los objetivos del paciente y la valoración del especialista en una consulta de diagnóstico.",
+      category: "Ortodoncia",
+    },
+    {
+      question: "¿Los alineadores transparentes son adecuados para todos los casos?",
+      answer:
+        "Los alineadores transparentes son una alternativa estética y removible eficaz en determinados casos de maloclusión. Su indicación depende del diagnóstico individual: hay correcciones que responden bien a este sistema y otras que requieren aparatología fija. El especialista evaluará la situación dental, ósea y funcional para recomendar el tratamiento más apropiado.",
+      category: "Ortodoncia",
+    },
+    // ── Salud gingival / Periodoncia ─────────────────────────────────────────
+    {
+      question: "¿Cuál es la diferencia entre gingivitis y periodontitis?",
+      answer:
+        "La gingivitis es una inflamación de las encías causada principalmente por la acumulación de placa bacteriana; se caracteriza por encías enrojecidas, inflamadas y con tendencia al sangrado, pero sin pérdida de hueso ni de la inserción del diente. Es reversible con tratamiento profesional y una correcta higiene en casa. La periodontitis es una forma más avanzada en la que la infección afecta los tejidos de soporte del diente, incluido el hueso alveolar, produciendo bolsas periodontales, retracción gingival y, si no se trata, movilidad dental. Requiere tratamiento periodontal específico y seguimiento continuo.",
+      category: "Salud Gingival",
+    },
+    {
+      question: "¿Qué incluye una limpieza dental profesional y con qué frecuencia se recomienda?",
+      answer:
+        "La limpieza dental profesional (profilaxis) incluye la eliminación del sarro (cálculo) supra e infragingival, la remoción de la placa bacteriana acumulada, el pulido de las superficies dentales y, en muchos casos, instrucciones de higiene personalizadas. Como pauta general se recomienda realizarla al menos una vez al año, aunque en pacientes con mayor acumulación de sarro o antecedentes de enfermedad periodontal el profesional puede indicar revisiones más frecuentes.",
+      category: "Salud Gingival",
+    },
+    // ── Información general ──────────────────────────────────────────────────
     {
       question: "¿Cómo puedo reservar una cita en DentaLux?",
       answer:
-        "Usa el botón «Reservar cita» en cualquier sección de esta página. Te llevará al canal oficial proporcionado por DentaLux para solicitar disponibilidad.",
+        "Usa el botón «Reservar cita» en cualquier sección de esta página. Te llevará al canal oficial proporcionado por DentaLux para solicitar disponibilidad de forma rápida y directa.",
       category: "Reservas",
     },
     {
       question: "¿Dónde está ubicada DentaLux Clínica Dental?",
-      answer:
-        "Estamos en Pucallpa 245, Tingo María, Huánuco, Perú. Puedes abrir el mapa interactivo desde la sección de Ubicación para obtener indicaciones precisas.",
+      answer: `Estamos en ${DENTALUX_ADDRESS.full}. Puedes abrir el mapa interactivo desde la sección de Ubicación para obtener indicaciones precisas hacia la clínica.`,
       category: "Ubicación",
     },
     {
       question: "¿Cómo consulto por un tratamiento específico?",
       answer:
-        "Indica el motivo de tu consulta al reservar. La clínica confirmará directamente la disponibilidad del tratamiento y la evaluación necesaria.",
-      category: "Consultas",
+        "Al reservar tu cita puedes indicar el motivo de tu consulta o el tratamiento de interés. El equipo de DentaLux confirmará la disponibilidad del especialista y los pasos previos necesarios para tu evaluación.",
+      category: "Reservas",
     },
     {
-      question: "¿Cuál es el horario de atención?",
+      question: "¿Qué debo esperar en mi primera consulta?",
       answer:
-        "El horario todavía está pendiente de validación para esta web. Confírmalo mediante el canal oficial de reservas antes de acudir.",
-      category: "Horarios",
+        "En la primera visita el profesional realizará una exploración clínica de tu boca, encías y mordida, valorará el estado general de tu salud dental y, si es necesario, solicitará imágenes de diagnóstico. Con esa información elaborará un plan de tratamiento personalizado y responderá tus preguntas antes de iniciar cualquier procedimiento.",
+      category: "Reservas",
+    },
+    {
+      question: "¿Atienden a niños y adolescentes?",
+      answer:
+        "DentaLux ofrece atención odontológica para pacientes de todas las edades, incluyendo odontopediatría y ortopedia maxilar para el seguimiento del desarrollo dental en niños y adolescentes. La consulta temprana permite detectar alteraciones en etapas donde la corrección es más sencilla y eficaz. Consulta la disponibilidad de este servicio al reservar.",
+      category: "Reservas",
     },
   ] satisfies FaqItem[],
   testimonials: [] as Testimonial[],

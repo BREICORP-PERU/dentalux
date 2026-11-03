@@ -57,7 +57,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.16 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-white/78 sm:text-lg md:text-xl"
           >
-            Solicita tu cita mediante el canal oficial de {siteConfig.shortName} y encuentra la clínica en {siteConfig.address.street}, {siteConfig.address.locality}.
+            Solicita tu cita mediante el canal oficial de {siteConfig.shortName} y encuentra la clínica en {siteConfig.address.intermediate}.
           </m.p>
 
           <m.div
@@ -98,7 +98,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-2">
               <MapPin size={16} className="text-gold-light" aria-hidden="true" />
-              {siteConfig.address.street} · {siteConfig.address.locality}
+              {siteConfig.address.intermediate}
             </span>
           </m.div>
 
@@ -128,7 +128,7 @@ export default function Hero() {
         </span>
         <span>
           <span className="block text-xs font-bold uppercase tracking-[0.14em] text-gold-light">Estamos en Tingo María</span>
-          <span className="mt-1 block text-sm text-white/75">{siteConfig.address.street}</span>
+          <span className="mt-1 block text-sm text-white/75">{siteConfig.address.short}</span>
         </span>
       </m.div>
 

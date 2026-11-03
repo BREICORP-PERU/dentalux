@@ -41,7 +41,7 @@ export default function About() {
                 </span>
                 <span>
                   <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-gold-dark">DentaLux en Tingo María</span>
-                  <span className="mt-1 block text-sm font-semibold text-ink">{siteConfig.address.street}</span>
+                  <span className="mt-1 block text-sm font-semibold text-ink">{siteConfig.address.short}</span>
                 </span>
               </div>
             </div>

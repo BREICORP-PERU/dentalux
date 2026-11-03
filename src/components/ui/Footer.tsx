@@ -14,7 +14,7 @@ const navigation = [
   { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Galería", href: "#galeria" },
-  { label: "Equipo", href: "#equipo" },
+  ...(siteConfig.specialists.length > 0 ? [{ label: "Equipo", href: "#equipo" }] : []),
   { label: "Preguntas", href: "#faq" },
   { label: "Ubicación", href: "#ubicacion" },
 ];
@@ -118,9 +118,6 @@ export default function Footer() {
             >
               BREICORP
             </a>
-          </p>
-          <p className="text-xs text-white/30">
-            Horario pendiente de confirmación oficial. Consulta disponibilidad al reservar.
           </p>
         </div>
       </div>

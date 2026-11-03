@@ -18,7 +18,7 @@ const TRUST_ITEMS = [
   {
     icon: MapPin,
     title: "Tingo María",
-    text: siteConfig.address.street,
+    text: siteConfig.address.short,
   },
   {
     icon: ShieldCheck,

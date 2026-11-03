@@ -58,7 +58,7 @@ export default function Locations() {
                 <div className="mt-7 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                   <Clock3 className="mt-0.5 shrink-0 text-gold-light" size={20} aria-hidden="true" />
                   <div>
-                    <p className="font-semibold text-sm">Horario pendiente de confirmación</p>
+                    <p className="font-semibold text-sm">Horario de atención</p>
                     <p className="mt-1 text-sm text-white/60">{siteConfig.hours.display}</p>
                   </div>
                 </div>

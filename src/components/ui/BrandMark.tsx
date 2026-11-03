@@ -1,13 +1,33 @@
 import Image from "next/image";
 import dentaluxLogo from "@/app/dentaluxlogo.png";
+import dentaluxHorizontalLogo from "@/app/LOGO.png";
 import { siteConfig } from "@/config/site";
 
 type BrandMarkProps = {
   inverse?: boolean;
   compact?: boolean;
+  horizontal?: boolean;
+  preload?: boolean;
 };
 
-export default function BrandMark({ inverse = false, compact = false }: BrandMarkProps) {
+export default function BrandMark({
+  inverse = false,
+  compact = false,
+  horizontal = false,
+  preload = false,
+}: BrandMarkProps) {
+  if (horizontal) {
+    return (
+      <Image
+        src={dentaluxHorizontalLogo}
+        alt={`Logotipo oficial de ${siteConfig.name}`}
+        preload={preload}
+        sizes="(max-width: 639px) 172px, (max-width: 1023px) 210px, (max-width: 1279px) 220px, 240px"
+        className="h-auto w-[172px] object-contain sm:w-[210px] lg:w-[220px] xl:w-[240px]"
+      />
+    );
+  }
+
   return (
     <span className="inline-flex items-center gap-3 group" aria-label={siteConfig.name}>
       <span

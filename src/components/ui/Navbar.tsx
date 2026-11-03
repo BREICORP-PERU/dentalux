@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Galería", href: "#galeria" },
-  { label: "Equipo", href: "#equipo" },
+  ...(siteConfig.specialists.length > 0 ? [{ label: "Equipo", href: "#equipo" }] : []),
   { label: "Preguntas", href: "#faq" },
   { label: "Ubicación", href: "#ubicacion" },
 ];
@@ -74,7 +74,7 @@ export default function Navbar() {
           "fixed inset-x-0 top-0 z-50 w-full border-b px-4 transition-[padding,background-color,box-shadow,border-color] duration-500 sm:px-6",
           isScrolled
             ? "border-black/5 bg-white/95 py-3 shadow-lg shadow-black/5 backdrop-blur-xl"
-            : "border-white/10 bg-gradient-to-b from-black/45 to-transparent py-4 sm:py-5"
+            : "border-black/5 bg-white/90 py-4 shadow-sm shadow-black/5 backdrop-blur-md sm:py-5"
         )}
       >
         <nav
@@ -83,7 +83,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Link href="/" aria-label={`${siteConfig.name} - Inicio`} className="shrink-0">
-            <BrandMark inverse={!isScrolled} />
+            <BrandMark horizontal preload />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -92,20 +92,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "group relative py-2 text-[13px] font-bold tracking-[0.02em] transition-colors",
-                  isScrolled
-                    ? "text-charcoal hover:text-gold-dark"
-                    : "text-white/90 hover:text-gold-light drop-shadow-sm"
-                )}
+                className="group relative py-2 text-[13px] font-bold tracking-[0.02em] text-charcoal transition-colors hover:text-gold-dark"
               >
                 {link.label}
-                <span
-                  className={cn(
-                    "absolute bottom-0 left-0 h-0.5 w-0 transition-[width] duration-300 group-hover:w-full",
-                    isScrolled ? "bg-gold-dark" : "bg-gold-light"
-                  )}
-                />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gold-dark transition-[width] duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -131,12 +121,7 @@ export default function Navbar() {
             aria-expanded={mobileMenuOpen}
             aria-controls={mobileMenuId}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className={cn(
-              "grid h-11 w-11 place-items-center rounded-2xl transition-colors lg:hidden shrink-0",
-              isScrolled
-                ? "text-ink hover:bg-gold-soft"
-                : "text-white hover:bg-white/15 drop-shadow-md"
-            )}
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl text-ink transition-colors hover:bg-gold-soft lg:hidden"
           >
             {mobileMenuOpen ? <X size={26} aria-hidden="true" /> : <Menu size={26} aria-hidden="true" />}
           </button>
@@ -161,14 +146,14 @@ export default function Navbar() {
             <div className="pointer-events-none fixed -right-24 top-24 h-72 w-72 rounded-full border-[54px] border-gold/10" aria-hidden="true" />
             <div className="pointer-events-none fixed -bottom-28 -left-28 h-72 w-72 rounded-full bg-gold/10 blur-3xl" aria-hidden="true" />
             {/* Drawer Header */}
-            <div className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-white/10 bg-ink px-5 py-4 sm:px-6 sm:py-5">
-              <BrandMark inverse />
+            <div className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-black/10 bg-white/95 px-5 py-4 backdrop-blur-md sm:px-6 sm:py-5">
+              <BrandMark horizontal />
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Cerrar menú"
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white transition hover:border-gold/50 hover:bg-white/10"
+                className="grid h-11 w-11 place-items-center rounded-full border border-black/10 text-ink transition hover:border-gold/50 hover:bg-gold-soft"
               >
                 <X size={24} aria-hidden="true" />
               </button>
