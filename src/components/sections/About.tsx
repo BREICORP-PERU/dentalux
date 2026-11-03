@@ -26,7 +26,7 @@ export default function About() {
             <div className="absolute -left-4 -top-4 h-full w-full rounded-[2.25rem] border border-gold/35" aria-hidden="true" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] bg-ink shadow-[0_34px_85px_-42px_rgba(17,17,17,0.65)]">
               <Image
-                src="/about-dentalux.webp"
+                src="/comprometidos.webp"
                 alt="Compromiso profesional y atención clínica en DentaLux Clínica Dental"
                 fill
                 className="object-cover"
