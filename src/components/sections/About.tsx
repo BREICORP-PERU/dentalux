@@ -27,7 +27,7 @@ export default function About() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] bg-ink shadow-[0_34px_85px_-42px_rgba(17,17,17,0.65)]">
               <Image
                 src="/comprometidos.webp"
-                alt="Compromiso profesional y atención clínica en DentaLux Clínica Dental"
+                alt="Gráfico promocional de DentaLux con el mensaje Comprometidos con tu sonrisa"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 46vw"

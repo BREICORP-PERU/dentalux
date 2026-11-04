@@ -3,19 +3,15 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ArrowRight, Check, Send, Sparkles, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
+import { siteConfig } from "@/config/site";
 import { WhatsAppIcon } from "./SocialIcons";
 
-const WHATSAPP_PHONE = "51942877890";
-
 const QUICK_TREATMENTS = [
-  "Implantes dentales",
-  "Ortodoncia",
-  "Periodoncia",
-  "Blanqueamiento",
-  "Diseño de sonrisa",
-  "Ortopedia",
+  ...siteConfig.services
+    .filter((service) => service.status === "confirmed" && service.publicationStatus === "approved")
+    .map((service) => service.title),
   "Otro",
-] as const;
+];
 
 export function buildWhatsAppUrl(treatment: string, customText?: string): string {
   let message = "";
@@ -23,21 +19,21 @@ export function buildWhatsAppUrl(treatment: string, customText?: string): string
     const detail = customText?.trim();
     message = detail
       ? `Hola, me gustaría consultar sobre el tratamiento de ${detail}.`
-      : `Hola, me gustaría consultar sobre los tratamientos en DentaLux.`;
+      : `Hola, me gustaría consultar sobre los tratamientos en ${siteConfig.shortName}.`;
   } else {
     const cleanTreatment = treatment.trim();
     message = cleanTreatment
       ? `Hola, me gustaría consultar sobre el tratamiento de ${cleanTreatment}.`
-      : `Hola, me gustaría consultar sobre los tratamientos en DentaLux.`;
+      : `Hola, me gustaría consultar sobre los tratamientos en ${siteConfig.shortName}.`;
   }
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${siteConfig.phone.e164.replace(/^\+/, "")}?text=${encodeURIComponent(message)}`;
 }
 
 export default function WhatsAppButton() {
   const reduceMotion = useReducedMotion();
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedTreatment, setSelectedTreatment] = useState<string>("Ortodoncia");
+  const [selectedTreatment, setSelectedTreatment] = useState<string>(QUICK_TREATMENTS[0]);
   const [customText, setCustomText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
@@ -139,7 +135,7 @@ export default function WhatsAppButton() {
       const text = customText.trim();
       return text
         ? `Hola, me gustaría consultar sobre el tratamiento de ${text}.`
-        : `Hola, me gustaría consultar sobre los tratamientos en DentaLux.`;
+        : `Hola, me gustaría consultar sobre los tratamientos en ${siteConfig.shortName}.`;
     }
     return `Hola, me gustaría consultar sobre el tratamiento de ${selectedTreatment}.`;
   })();
@@ -302,7 +298,7 @@ export default function WhatsAppButton() {
                           handleDirectSend("Otro");
                         }
                       }}
-                      placeholder="Ej. Carillas, profilaxis, urgencia..."
+                      placeholder="Ej. Motivo de tu consulta"
                       className="w-full rounded-xl border border-gold/40 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/30"
                     />
                   </m.div>
@@ -332,7 +328,7 @@ export default function WhatsAppButton() {
                   <ArrowRight size={16} aria-hidden="true" />
                 </button>
                 <p className="mt-2 text-center text-[11px] text-white/40">
-                  Número oficial de DentaLux: +51 942 877 890
+                  Teléfono de {siteConfig.shortName}: {siteConfig.phone.display}
                 </p>
               </div>
             </m.div>

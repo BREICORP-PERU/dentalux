@@ -1,4 +1,4 @@
-import { CalendarCheck, MapPin, Phone } from "lucide-react";
+import { CalendarCheck, Clock3, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { siteConfig, socialLinks } from "@/config/site";
 import BrandMark from "./BrandMark";
@@ -91,7 +91,13 @@ export default function Footer() {
               {siteConfig.phone.status === "confirmed" && (
                 <div className="flex items-center gap-3 text-sm text-white/65">
                   <Phone className="shrink-0 text-gold-light" size={18} aria-hidden="true" />
-                  <span>WhatsApp: {siteConfig.phone.display}</span>
+                  <a href={`tel:${siteConfig.phone.e164}`} className="hover:text-white">{siteConfig.phone.display}</a>
+                </div>
+              )}
+              {siteConfig.hours.status === "confirmed" && (
+                <div className="flex items-start gap-3 text-sm leading-relaxed text-white/65">
+                  <Clock3 className="mt-0.5 shrink-0 text-gold-light" size={18} aria-hidden="true" />
+                  <span>{siteConfig.hours.display.map((line) => <span key={line} className="block">{line}</span>)}</span>
                 </div>
               )}
             </address>

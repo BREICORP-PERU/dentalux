@@ -13,7 +13,7 @@ import {
 import { m, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { siteConfig } from "@/config/site";
+import { siteConfig, type Service } from "@/config/site";
 import { WhatsAppIcon } from "@/components/ui/SocialIcons";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -29,10 +29,10 @@ export default function Services() {
   const cardsRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardsRef, { once: true, margin: "-80px" });
   const publicServices = siteConfig.services.filter(
-    (service) =>
+    (service: Service) =>
       service.status === "confirmed" &&
-      service.documentationStatus === "documented" &&
-      service.publicationStatus === "approved",
+      service.publicationStatus === "approved" &&
+      service.showInServices !== false,
   );
 
   const handleConsultWhatsApp = (treatmentTitle: string) => {
@@ -84,9 +84,9 @@ export default function Services() {
                   <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line/70 bg-surface">
                     <Image
                       src={service.image}
-                      alt={`Tratamiento de ${service.title} en DentaLux`}
+                      alt={service.imageAlt}
                       fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40" />
@@ -108,7 +108,7 @@ export default function Services() {
                   <h3 className="font-heading text-2xl font-bold text-ink">{service.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.description}</p>
 
-                  <details className="group/treatment mt-6 border-t border-line pt-4">
+                  {service.variants.length > 0 && <details className="group/treatment mt-6 border-t border-line pt-4">
                     <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 rounded-xl text-sm font-bold text-gold-dark outline-none transition hover:text-ink focus-visible:ring-2 focus-visible:ring-gold [&::-webkit-details-marker]:hidden">
                       <span>Conocer tratamientos</span>
                       <ChevronRight size={16} className="shrink-0 transition-transform group-open/treatment:rotate-90" aria-hidden="true" />
@@ -121,7 +121,7 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
-                  </details>
+                  </details>}
                 </div>
 
                 <div className="relative z-10 mt-6 border-t border-line/60 pt-4">

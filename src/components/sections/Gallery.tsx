@@ -76,7 +76,7 @@ export default function Gallery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-sm text-muted leading-relaxed text-sm md:text-base"
           >
-            Explora de manera visual las alternativas odontológicas y de estética dental que forman parte del cuidado especializado en DentaLux.
+            Conoce en imágenes las áreas de atención odontológica y la planificación personalizada de DentaLux.
           </m.p>
         </div>
 
@@ -102,8 +102,8 @@ export default function Gallery() {
                 src={item.src}
                 alt={item.alt}
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                className="object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes={item.span === "wide" ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
               
@@ -138,7 +138,7 @@ export default function Gallery() {
                 Fotografías y casos
               </span>
               <h3 className="font-heading text-2xl font-bold text-white sm:text-3xl">
-                ¿Quieres ver más resultados?
+                ¿Quieres ver más fotografías?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/70 sm:text-base">
                 Visita nuestra página de Facebook y descubre más fotografías y publicaciones de DentaLux Clínica Dental.
@@ -195,7 +195,7 @@ export default function Gallery() {
                   src={activeItem.src}
                   alt={activeItem.alt}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 1200px"
                 />
               </div>

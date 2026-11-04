@@ -17,17 +17,21 @@ export type Service = {
   description: string;
   icon: string;
   image: string;
+  imageAlt: string;
   status: VerificationStatus;
   documentationStatus: DocumentationStatus;
   publicationStatus: PublicationStatus;
+  showInServices?: boolean;
   variants: readonly TreatmentVariant[];
 };
 
 export type Specialist = {
   name: string;
   role: string;
-  bio: string;
-  image: string;
+  specialty: string | null;
+  licenseNumber: string | null;
+  bio: string | null;
+  image: string | null;
   status: "confirmed";
 };
 
@@ -72,7 +76,7 @@ export const siteConfig = {
     "Clínica dental ubicada en Tingo María, Huánuco. Encuentra la ubicación y solicita una cita mediante el canal oficial de DentaLux.",
   locale: "es_PE",
   language: "es-PE",
-  domain: null as string | null,
+  domain: "https://dentalux-ruddy.vercel.app" as string | null,
   identity: {
     status: "logo-derived" as const,
     logoStatus: "provided" as const,
@@ -95,10 +99,9 @@ export const siteConfig = {
     countryCode: "PE",
   },
   phone: {
-    status: "pending" as VerificationStatus,
-    display: "942 877 890",
+    status: "confirmed" as VerificationStatus,
+    display: "+51 942 877 890",
     e164: "+51942877890",
-    note: "Teléfono publicado en la ficha de Google; pendiente de confirmación directa.",
   },
   reservations: {
     status: "confirmed" as const,
@@ -130,9 +133,16 @@ export const siteConfig = {
     },
   },
   hours: {
-    status: "pending" as VerificationStatus,
-    publicReference: "Lunes a sábado, 8:00–13:00 y 15:00–20:00",
-    display: "Confirma el horario disponible al reservar",
+    status: "confirmed" as VerificationStatus,
+    display: [
+      "Lunes a sábado: 8:00 a. m. a 1:00 p. m. y 3:00 p. m. a 8:00 p. m.",
+      "Domingo: cerrado",
+    ],
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    periods: [
+      { opens: "08:00", closes: "13:00" },
+      { opens: "15:00", closes: "20:00" },
+    ],
   },
   social: {
     facebook: "https://www.facebook.com/DENTALUXTINGOMARIA",
@@ -153,10 +163,12 @@ export const siteConfig = {
       description:
         "Alternativas de rehabilitación oral orientadas a recuperar la funcionalidad y la estética de la sonrisa mediante una planificación personalizada.",
       icon: "shield",
-      image: "/tratamientos/implante.webp",
+      image: "/tratamiento/implantes-dentales.webp",
+      imageAlt: "Profesionales de DentaLux durante una cirugía oral",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
+      showInServices: false,
       variants: [
         {
           title: "Implantes unitarios",
@@ -192,7 +204,8 @@ export const siteConfig = {
       description:
         "Tratamientos para corregir la posición dental y las alteraciones de la mordida mediante una planificación individualizada.",
       icon: "smile",
-      image: "/tratamientos/ortodoncia.webp",
+      image: "/tratamiento/ortodoncia.webp",
+      imageAlt: "Odontólogo de DentaLux durante un control de ortodoncia",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
@@ -225,171 +238,144 @@ export const siteConfig = {
       ],
     },
     {
-      title: "Periodoncia",
+      title: "Limpieza dental profesional",
       category: "Salud Gingival",
-      badge: "Salud de Encías",
-      description:
-        "Atención orientada a prevenir, diagnosticar y tratar enfermedades de las encías y de los tejidos de soporte dental.",
+      badge: "Higiene bucal",
+      description: "Procedimiento de higiene bucal incluido en la atención odontológica documentada por DentaLux.",
       icon: "activity",
-      image: "/tratamientos/gingivoplastia.webp",
+      image: "/tratamiento/limpieza-dental-profesional.webp",
+      imageAlt: "Atención de limpieza dental profesional en DentaLux",
       status: "confirmed" as const,
       documentationStatus: "documented" as const,
       publicationStatus: "approved" as const,
-      variants: [
-        {
-          title: "Gingivitis",
-          description: "Atención periodontal para casos de gingivitis, según la evaluación profesional de cada paciente.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Periodontitis",
-          description: "Atención periodontal para casos de periodontitis, de acuerdo con una evaluación individual.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Limpieza dental profesional",
-          description: "Procedimiento profesional de higiene bucal incluido en la atención periodontal documentada.",
-          documentationStatus: "documented" as const,
-        },
-      ],
+      variants: [],
     },
     {
-      title: "Blanqueamiento",
-      category: "Estética Dental",
-      badge: "Estética",
-      description:
-        "Procedimiento estético orientado a aclarar la tonalidad dental y devolver el brillo natural a tu sonrisa bajo supervisión profesional.",
+      title: "Profilaxis",
+      category: "Higiene Bucal",
+      badge: "Prevención",
+      description: "Atención de higiene bucal profesional según la evaluación de cada paciente.",
       icon: "sparkles",
-      image: "/tratamientos/blanqueamiento.webp",
+      image: "/tratamiento/profilaxis.webp",
+      imageAlt: "Paciente durante una profilaxis dental en DentaLux",
       status: "confirmed" as const,
-      documentationStatus: "documented" as const,
+      documentationStatus: "pending" as const,
       publicationStatus: "approved" as const,
-      variants: [
-        {
-          title: "Blanqueamiento en clínica",
-          description: "Protocolo clínico supervisado con activación lumínica para resultados visibles y seguros.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Aclaramiento ambulatorio",
-          description: "Tratamiento guiado por el especialista mediante férulas personalizadas para uso en casa.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Control y mantenimiento",
-          description: "Recomendaciones y pautas preventivas para preservar la luminosidad del esmalte dental.",
-          documentationStatus: "documented" as const,
-        },
-      ],
+      variants: [],
     },
     {
-      title: "Diseño de sonrisa",
-      category: "Armonización Dental",
-      badge: "Armonización",
-      description:
-        "Planificación estética integral que armoniza forma, tamaño, proporción y color dental de acuerdo con la fisonomía facial del paciente.",
-      icon: "palette",
-      image: "/tratamientos/diseñosonrisa.webp",
-      status: "confirmed" as const,
-      documentationStatus: "documented" as const,
-      publicationStatus: "approved" as const,
-      variants: [
-        {
-          title: "Evaluación estética personalizada",
-          description: "Estudio minucioso de la línea de la sonrisa, contorno gingival y proporción dental.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Carillas y microcarillas",
-          description: "Soluciones estéticas conservadoras para corregir anomalías de forma, color y espaciado.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Contorneado cosmético",
-          description: "Ajuste delicado y conservador de bordes para lograr equilibrio y simetría.",
-          documentationStatus: "documented" as const,
-        },
-      ],
-    },
-    {
-      title: "Ortopedia",
-      category: "Desarrollo y Prevención",
-      badge: "Ortopedia Dentofacial",
-      description:
-        "Atención interceptiva orientada a guiar el crecimiento armónico de los maxilares y prevenir discrepancias esqueléticas en etapas tempranas.",
+      title: "Rehabilitación oral",
+      category: "Rehabilitación Oral",
+      badge: "Rehabilitación",
+      description: "Opciones de rehabilitación oral que se definen mediante una evaluación individual.",
       icon: "compass",
-      image: "/tratamientos/ortopedia.webp",
+      image: "/tratamiento/rehabilitacion.webp",
+      imageAlt: "Odontólogo de DentaLux utiliza un escáner intraoral durante la atención de una paciente",
       status: "confirmed" as const,
-      documentationStatus: "documented" as const,
+      documentationStatus: "pending" as const,
       publicationStatus: "approved" as const,
-      variants: [
-        {
-          title: "Ortopedia funcional",
-          description: "Aparatología diseñada para modular y estimular el crecimiento adecuado de los huesos maxilares.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Corrección interceptiva",
-          description: "Detección y tratamiento oportuno de alteraciones de la mordida y discrepancias de desarrollo.",
-          documentationStatus: "documented" as const,
-        },
-        {
-          title: "Guía de erupción dental",
-          description: "Supervisión del recambio dentario para optimizar la alineación y el espacio disponible.",
-          documentationStatus: "documented" as const,
-        },
-      ],
+      variants: [],
+    },
+    {
+      title: "Planificación del tratamiento",
+      category: "Atención Personalizada",
+      badge: "Evaluación",
+      description: "Consulta para valorar las alternativas de atención y definir un plan individualizado.",
+      icon: "palette",
+      image: "/tratamiento/planificacion-tratamiento.webp",
+      imageAlt: "Odontólogo de DentaLux explica a una paciente su planificación de tratamiento",
+      status: "confirmed" as const,
+      documentationStatus: "pending" as const,
+      publicationStatus: "approved" as const,
+      variants: [],
+    },
+    {
+      title: "Curaciones dentales",
+      category: "Atención Dental",
+      badge: "Cuidado dental",
+      description: "Atención para curaciones dentales según la evaluación profesional de cada caso.",
+      icon: "shield",
+      image: "/tratamiento/curaciones-dentales.webp",
+      imageAlt: "Odontólogo de DentaLux atiende a una paciente durante una curación dental",
+      status: "confirmed" as const,
+      documentationStatus: "pending" as const,
+      publicationStatus: "approved" as const,
+      showInServices: false,
+      variants: [],
+    },
+    {
+      title: "Odontopediatría",
+      category: "Atención Infantil",
+      badge: "Niños",
+      description: "Atención odontológica para niños; consulta la evaluación adecuada para cada caso.",
+      icon: "smile",
+      image: "/tratamiento/odontopediatria.webp",
+      imageAlt: "Odontólogo de DentaLux junto a un niño en el consultorio",
+      status: "confirmed" as const,
+      documentationStatus: "pending" as const,
+      publicationStatus: "approved" as const,
+      variants: [],
     },
   ] satisfies Service[],
-  specialists: [] as Specialist[],
+  specialists: [
+    {
+      name: "Ireno Huacachino Minaya",
+      role: "Odontólogo de DentaLux",
+      specialty: null,
+      licenseNumber: null,
+      bio: null,
+      image: "/dcprincipal.webp",
+      status: "confirmed",
+    },
+  ] satisfies Specialist[],
   // Galería de tratamientos de DentaLux
   gallery: [
     {
-      src: "/tratamientos/implante.webp",
-      alt: "Rehabilitación con implantes dentales en DentaLux",
-      label: "Implantes Dentales",
+      src: "/tratamiento/implantes-dentales.webp",
+      alt: "Profesionales de DentaLux durante una cirugía oral",
+      label: "Implantes dentales",
       category: "Rehabilitación Oral",
-      note: "Alternativa de rehabilitación fija para recuperar la función masticatoria y la estética de la sonrisa.",
+      note: "Alternativas de rehabilitación oral sujetas a evaluación individual.",
       span: "wide" as const,
     },
     {
-      src: "/tratamientos/ortodoncia.webp",
-      alt: "Tratamiento de ortodoncia y alineación dental en DentaLux",
-      label: "Ortodoncia y Brackets",
+      src: "/tratamiento/ortodoncia.webp",
+      alt: "Odontólogo de DentaLux durante un control de ortodoncia",
+      label: "Ortodoncia",
       category: "Alineación y Mordida",
       note: "Corrección de la posición dental y de la mordida mediante planificación individualizada.",
       span: "normal" as const,
     },
     {
-      src: "/tratamientos/gingivoplastia.webp",
-      alt: "Cuidado periodontal y salud gingival en DentaLux",
-      label: "Periodoncia y Encías",
+      src: "/tratamiento/limpieza-dental-profesional.webp",
+      alt: "Equipo de DentaLux atiende a una paciente durante limpieza dental profesional",
+      label: "Limpieza dental profesional",
       category: "Salud Gingival",
-      note: "Atención orientada a la salud de las encías y los tejidos de soporte dental.",
+      note: "Procedimiento de higiene bucal incluido en la atención periodontal documentada.",
       span: "normal" as const,
     },
     {
-      src: "/tratamientos/blanqueamiento.webp",
-      alt: "Tratamiento de blanqueamiento dental en DentaLux",
-      label: "Blanqueamiento Dental",
-      category: "Estética Dental",
-      note: "Procedimiento profesional supervisado para aclarar la tonalidad y devolver luminosidad al esmalte.",
+      src: "/tratamiento/profilaxis.webp",
+      alt: "Paciente de DentaLux durante una profilaxis dental",
+      label: "Higiene bucal profesional",
+      category: "Salud Gingival",
+      note: "Limpieza dental profesional documentada como parte de la atención periodontal.",
       span: "normal" as const,
     },
     {
-      src: "/tratamientos/ortopedia.webp",
-      alt: "Ortopedia maxilar y atención preventiva en DentaLux",
-      label: "Ortopedia Maxilar",
-      category: "Desarrollo y Prevención",
-      note: "Atención preventiva orientada a guiar el desarrollo óseo maxilofacial en etapas de crecimiento.",
+      src: "/tratamiento/rehabilitacion.webp",
+      alt: "Odontólogo de DentaLux utiliza un escáner intraoral durante la atención de una paciente",
+      label: "Rehabilitación oral",
+      category: "Rehabilitación Oral",
+      note: "Imagen de atención odontológica relacionada con la rehabilitación oral.",
       span: "normal" as const,
     },
     {
-      src: "/tratamientos/diseñosonrisa.webp",
-      alt: "Diseño de sonrisa y armonización estética en DentaLux",
-      label: "Diseño de Sonrisa",
-      category: "Armonización Facial",
-      note: "Planificación estética integral considerando las proporciones faciales y la simetría de la sonrisa.",
+      src: "/tratamiento/planificacion-tratamiento.webp",
+      alt: "Odontólogo de DentaLux explica a una paciente su planificación de tratamiento",
+      label: "Planificación del tratamiento",
+      category: "Atención Personalizada",
+      note: "Cada alternativa se define mediante una evaluación profesional individual.",
       span: "wide" as const,
     },
   ] satisfies GalleryItem[],
@@ -400,45 +386,39 @@ export const siteConfig = {
     {
       question: "¿Qué tipos de implantes dentales ofrece DentaLux?",
       answer:
-        "DentaLux trabaja con distintas soluciones de rehabilitación oral según la situación de cada paciente: implantes unitarios para reponer una sola pieza, implantes múltiples cuando se han perdido varias, prótesis híbridas fijas para rehabilitaciones completas de arcada, sobredentaduras retenidas por implantes que ofrecen mayor estabilidad que las prótesis convencionales, e injertos óseos cuando el volumen de hueso disponible requiere regeneración previa al implante. El tratamiento adecuado se determina en una evaluación clínica personalizada.",
+        "DentaLux documenta implantes unitarios y múltiples, prótesis híbridas sobre implantes, sobredentaduras e injerto óseo. La alternativa adecuada se determina en una evaluación individual.",
       category: "Implantes",
     },
     {
       question: "¿Cuándo se necesita un injerto óseo antes de colocar un implante?",
       answer:
-        "El injerto óseo se indica cuando la cantidad o densidad de hueso en la zona donde se planea el implante es insuficiente para garantizar su estabilidad a largo plazo. Factores como la pérdida dental antigua, la enfermedad periodontal o extracciones sin rehabilitación inmediata pueden reducir el volumen óseo. La necesidad de injerto se evalúa mediante exploración clínica e imagenología antes de planificar el tratamiento.",
+        "El documento de DentaLux describe el injerto óseo como una opción para recuperar o aumentar el volumen de hueso cuando es insuficiente para determinados tratamientos con implantes. Su indicación requiere evaluación profesional.",
       category: "Implantes",
     },
     {
       question: "¿En qué se diferencian una prótesis híbrida y una sobredentadura?",
       answer:
-        "La prótesis híbrida es una rehabilitación fija, atornillada sobre implantes, que el paciente no retira; está indicada en quienes han perdido todos o la mayoría de los dientes de una arcada y buscan una solución estable y funcional. La sobredentadura es removible y se retiene mediante implantes mediante sistemas de anclaje, ofreciendo mayor comodidad y estabilidad respecto a una prótesis convencional pero con posibilidad de retirarla para su higiene. El especialista determinará cuál se ajusta mejor a cada caso.",
+        "Según la información proporcionada por DentaLux, la prótesis híbrida es fija y la sobredentadura es removible y sostenida por implantes. La elección depende de la evaluación de cada paciente.",
       category: "Implantes",
     },
     // ── Ortodoncia ───────────────────────────────────────────────────────────
     {
       question: "¿Qué modalidades de ortodoncia están disponibles en DentaLux?",
       answer:
-        "DentaLux ofrece tratamientos de ortodoncia con brackets convencionales de metal, brackets estéticos de zafiro que se mimetizan con el color del diente, sistemas autoligados que reducen la fricción y pueden acortar algunos tiempos de tratamiento, y alineadores transparentes removibles para casos seleccionados. La indicación depende de la complejidad del caso, los objetivos del paciente y la valoración del especialista en una consulta de diagnóstico.",
+        "La información de DentaLux incluye brackets convencionales, de zafiro, autoligados metálicos y estéticos, además de alineadores transparentes. La opción se define mediante una evaluación individual.",
       category: "Ortodoncia",
     },
     {
       question: "¿Los alineadores transparentes son adecuados para todos los casos?",
       answer:
-        "Los alineadores transparentes son una alternativa estética y removible eficaz en determinados casos de maloclusión. Su indicación depende del diagnóstico individual: hay correcciones que responden bien a este sistema y otras que requieren aparatología fija. El especialista evaluará la situación dental, ósea y funcional para recomendar el tratamiento más apropiado.",
+        "Los alineadores transparentes figuran entre las alternativas de ortodoncia documentadas por DentaLux. Su indicación depende de la evaluación profesional de cada caso.",
       category: "Ortodoncia",
     },
-    // ── Salud gingival / Periodoncia ─────────────────────────────────────────
+    // ── Higiene bucal ────────────────────────────────────────────────────────
     {
-      question: "¿Cuál es la diferencia entre gingivitis y periodontitis?",
+      question: "¿DentaLux realiza limpieza dental profesional?",
       answer:
-        "La gingivitis es una inflamación de las encías causada principalmente por la acumulación de placa bacteriana; se caracteriza por encías enrojecidas, inflamadas y con tendencia al sangrado, pero sin pérdida de hueso ni de la inserción del diente. Es reversible con tratamiento profesional y una correcta higiene en casa. La periodontitis es una forma más avanzada en la que la infección afecta los tejidos de soporte del diente, incluido el hueso alveolar, produciendo bolsas periodontales, retracción gingival y, si no se trata, movilidad dental. Requiere tratamiento periodontal específico y seguimiento continuo.",
-      category: "Salud Gingival",
-    },
-    {
-      question: "¿Qué incluye una limpieza dental profesional y con qué frecuencia se recomienda?",
-      answer:
-        "La limpieza dental profesional (profilaxis) incluye la eliminación del sarro (cálculo) supra e infragingival, la remoción de la placa bacteriana acumulada, el pulido de las superficies dentales y, en muchos casos, instrucciones de higiene personalizadas. Como pauta general se recomienda realizarla al menos una vez al año, aunque en pacientes con mayor acumulación de sarro o antecedentes de enfermedad periodontal el profesional puede indicar revisiones más frecuentes.",
+        "Sí. La limpieza dental profesional figura en la información de tratamientos proporcionada por DentaLux. Consulta la frecuencia adecuada durante tu evaluación.",
       category: "Salud Gingival",
     },
     // ── Información general ──────────────────────────────────────────────────
@@ -457,18 +437,6 @@ export const siteConfig = {
       question: "¿Cómo consulto por un tratamiento específico?",
       answer:
         "Al reservar tu cita puedes indicar el motivo de tu consulta o el tratamiento de interés. El equipo de DentaLux confirmará la disponibilidad del especialista y los pasos previos necesarios para tu evaluación.",
-      category: "Reservas",
-    },
-    {
-      question: "¿Qué debo esperar en mi primera consulta?",
-      answer:
-        "En la primera visita el profesional realizará una exploración clínica de tu boca, encías y mordida, valorará el estado general de tu salud dental y, si es necesario, solicitará imágenes de diagnóstico. Con esa información elaborará un plan de tratamiento personalizado y responderá tus preguntas antes de iniciar cualquier procedimiento.",
-      category: "Reservas",
-    },
-    {
-      question: "¿Atienden a niños y adolescentes?",
-      answer:
-        "DentaLux ofrece atención odontológica para pacientes de todas las edades, incluyendo odontopediatría y ortopedia maxilar para el seguimiento del desarrollo dental en niños y adolescentes. La consulta temprana permite detectar alteraciones en etapas donde la corrección es más sencilla y eficaz. Consulta la disponibilidad de este servicio al reservar.",
       category: "Reservas",
     },
   ] satisfies FaqItem[],

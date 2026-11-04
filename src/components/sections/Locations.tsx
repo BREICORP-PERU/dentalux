@@ -59,7 +59,9 @@ export default function Locations() {
                   <Clock3 className="mt-0.5 shrink-0 text-gold-light" size={20} aria-hidden="true" />
                   <div>
                     <p className="font-semibold text-sm">Horario de atención</p>
-                    <p className="mt-1 text-sm text-white/60">{siteConfig.hours.display}</p>
+                    {siteConfig.hours.display.map((line) => (
+                      <p key={line} className="mt-1 text-sm text-white/70">{line}</p>
+                    ))}
                   </div>
                 </div>
 
@@ -67,8 +69,10 @@ export default function Locations() {
                   <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                     <Phone className="shrink-0 text-gold-light" size={20} aria-hidden="true" />
                     <div>
-                      <p className="font-semibold text-sm">WhatsApp</p>
-                      <p className="mt-0.5 text-sm text-white/60">{siteConfig.phone.display}</p>
+                      <p className="font-semibold text-sm">Teléfono</p>
+                      <a href={`tel:${siteConfig.phone.e164}`} className="mt-0.5 block text-sm text-white/70 hover:text-gold-light">
+                        {siteConfig.phone.display}
+                      </a>
                     </div>
                   </div>
                 )}

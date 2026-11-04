@@ -1,6 +1,6 @@
 import Image from "next/image";
 import dentaluxLogo from "@/app/dentaluxlogo.png";
-import dentaluxHorizontalLogo from "@/app/LOGO.png";
+import dentaluxHorizontalLogo from "@/app/LOGO.webp";
 import { siteConfig } from "@/config/site";
 
 type BrandMarkProps = {

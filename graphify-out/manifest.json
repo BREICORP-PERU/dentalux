@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1793027692.0944986,
-    "seen": 1793642033.9196727,
-    "ast_hash": "2af6ad89e831011d36ada269aa4550a5",
+    "mtime": 1793806803.3888211,
+    "seen": 1793807086.276468,
+    "ast_hash": "a509a72b885b7af61c1d3f135f411db2",
     "semantic_hash": ""
   },
   "src/app/manifest.ts": {
@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "src/components/sections/About.tsx": {
-    "mtime": 1793722414.8966987,
-    "seen": 1793722425.603124,
-    "ast_hash": "fb9aab02035b3322b2bfdbfd79c94bc8",
+    "mtime": 1793806803.3888211,
+    "seen": 1793807086.2765102,
+    "ast_hash": "cd27c2ca73745ccec1a71c5008be9510",
     "semantic_hash": ""
   },
   "src/components/sections/FAQ.tsx": {
@@ -78,33 +78,33 @@
     "semantic_hash": ""
   },
   "src/components/sections/Gallery.tsx": {
-    "mtime": 1793640327.726336,
-    "seen": 1793642033.9196951,
-    "ast_hash": "1e7667b039f8402be3fcc44178d6f879",
+    "mtime": 1793811736.736836,
+    "seen": 1793811764.5864978,
+    "ast_hash": "13c7e073bd32ed3c5bde28fd96638bf8",
     "semantic_hash": ""
   },
   "src/components/sections/Hero.tsx": {
-    "mtime": 1793722414.8946786,
-    "seen": 1793722425.6031308,
-    "ast_hash": "42b23f023b71ac7a77ff528a9f754a7a",
+    "mtime": 1793804739.7704098,
+    "seen": 1793804752.6381478,
+    "ast_hash": "622e719a3c84aa1019ff436e3f0533ec",
     "semantic_hash": ""
   },
   "src/components/sections/Locations.tsx": {
-    "mtime": 1793720430.4981108,
-    "seen": 1793722425.603133,
-    "ast_hash": "f7383eeec6e7e479249aa77a172baf0f",
+    "mtime": 1793806803.386362,
+    "seen": 1793807086.276533,
+    "ast_hash": "043abd018f86f2322ba7781b161f87fe",
     "semantic_hash": ""
   },
   "src/components/sections/Services.tsx": {
-    "mtime": 1793638653.2655396,
-    "seen": 1793642033.9197023,
-    "ast_hash": "1f1bfb323b868e8728df1d41683c8d80",
+    "mtime": 1793812022.7480948,
+    "seen": 1793812045.8396022,
+    "ast_hash": "bfef6bf05cc73936d0d18a0546c0e229",
     "semantic_hash": ""
   },
   "src/components/sections/Team.tsx": {
-    "mtime": 1793720430.5825367,
-    "seen": 1793722425.6031377,
-    "ast_hash": "efffa7b169b3a250edf71a4e7a06c749",
+    "mtime": 1793806782.0801466,
+    "seen": 1793807086.276542,
+    "ast_hash": "ed64e73b64285db2a8915aab95610aa1",
     "semantic_hash": ""
   },
   "src/components/sections/Testimonials.tsx": {
@@ -114,15 +114,15 @@
     "semantic_hash": ""
   },
   "src/components/ui/BrandMark.tsx": {
-    "mtime": 1793722797.9348102,
-    "seen": 1793722821.663734,
-    "ast_hash": "a9d304001f0307a0b49f7990b0878523",
+    "mtime": 1793806803.386362,
+    "seen": 1793807086.2765517,
+    "ast_hash": "0949f0d432c689740eed0d3353e28d20",
     "semantic_hash": ""
   },
   "src/components/ui/Footer.tsx": {
-    "mtime": 1793720430.6715772,
-    "seen": 1793722425.6031446,
-    "ast_hash": "89786234263bb510bef9290ab79dd365",
+    "mtime": 1793806803.3888211,
+    "seen": 1793807086.2765567,
+    "ast_hash": "231fd48cff23ecf62caf767d61e3cbab",
     "semantic_hash": ""
   },
   "src/components/ui/MotionProvider.tsx": {
@@ -144,15 +144,15 @@
     "semantic_hash": ""
   },
   "src/components/ui/WhatsAppButton.tsx": {
-    "mtime": 1793641376.0426898,
-    "seen": 1793642033.9197206,
-    "ast_hash": "710f58c14002de2d5f081c1ec12203e7",
+    "mtime": 1793806827.1020792,
+    "seen": 1793807086.2765756,
+    "ast_hash": "30b9c969b96ad7ac3c142c0a039f5bfc",
     "semantic_hash": ""
   },
   "src/config/site.ts": {
-    "mtime": 1793722414.8862484,
-    "seen": 1793722425.6031568,
-    "ast_hash": "6d3dc628821e0866eb971c3acc34fb04",
+    "mtime": 1793812263.3767352,
+    "seen": 1793812303.500869,
+    "ast_hash": "70b353f75b1924c03129228a1ae9bc5e",
     "semantic_hash": ""
   },
   "src/lib/utils.ts": {
@@ -183,18 +183,6 @@
     "mtime": 1792778429.278272,
     "seen": 1793642033.9197345,
     "ast_hash": "1e433570bc6cee45a3ae304a31841646",
-    "semantic_hash": ""
-  },
-  "public/about-dentalux-referential.webp": {
-    "mtime": 1793030580.633,
-    "seen": 1793642033.919737,
-    "ast_hash": "8a173e9a9333a2fdd6b2c4ef80b6eb9d",
-    "semantic_hash": ""
-  },
-  "public/about-dentalux.webp": {
-    "mtime": 1793639369.2867143,
-    "seen": 1793642033.9197395,
-    "ast_hash": "af7a1e32d0bdd8cfff70555e229413da",
     "semantic_hash": ""
   },
   "public/dentalux-care.svg": {
@@ -273,6 +261,72 @@
     "mtime": 1793722069.9043026,
     "seen": 1793722425.6032124,
     "ast_hash": "1f1d2a0e320f17d1401ffb34804a4beb",
+    "semantic_hash": ""
+  },
+  "public/comprometidos.webp": {
+    "mtime": 1793723896.3305643,
+    "seen": 1793804678.2605858,
+    "ast_hash": "4c5e565fc5e3a95e6fece451d0f317b7",
+    "semantic_hash": ""
+  },
+  "public/dcprincipal.webp": {
+    "mtime": 1793805846.217111,
+    "seen": 1793807086.2766154,
+    "ast_hash": "dc693264d0ed62c1a0ad75fc58247af9",
+    "semantic_hash": ""
+  },
+  "src/app/LOGO.webp": {
+    "mtime": 1793805945.8207633,
+    "seen": 1793807086.276682,
+    "ast_hash": "7a224f5a99867c39f0e9fbd04fb84721",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/curaciones-dentales.webp": {
+    "mtime": 1793809874.034751,
+    "seen": 1793810876.8327377,
+    "ast_hash": "48fc736335a73c96063b20df32d69a64",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/implantes-dentales.webp": {
+    "mtime": 1793809874.8265617,
+    "seen": 1793810876.8327403,
+    "ast_hash": "8fcef14758666eace8ea7799ff441f92",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/limpieza-dental-profesional.webp": {
+    "mtime": 1793809879.1110868,
+    "seen": 1793810876.8327432,
+    "ast_hash": "311d4cd4bad60abb1b0b46285dbe5ade",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/odontopediatria.webp": {
+    "mtime": 1793809959.7115548,
+    "seen": 1793810876.8327453,
+    "ast_hash": "d8ffe3ea794fe5e1a0c6de9b111e26c5",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/ortodoncia.webp": {
+    "mtime": 1793809875.7990177,
+    "seen": 1793810876.8327475,
+    "ast_hash": "10d2a8d05b9ca187cb18b70be44ddc2a",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/planificacion-tratamiento.webp": {
+    "mtime": 1793809876.640269,
+    "seen": 1793810876.8327498,
+    "ast_hash": "26804cb660b70286d8e45570d2210c7a",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/profilaxis.webp": {
+    "mtime": 1793809878.3220935,
+    "seen": 1793810876.8327522,
+    "ast_hash": "9ce4f0802e02bae06883c58436187ab5",
+    "semantic_hash": ""
+  },
+  "public/tratamiento/rehabilitacion.webp": {
+    "mtime": 1793809877.516648,
+    "seen": 1793810876.8327541,
+    "ast_hash": "a4edc42d53537865c9c8716340cf2e40",
     "semantic_hash": ""
   },
   "package-lock.json": {

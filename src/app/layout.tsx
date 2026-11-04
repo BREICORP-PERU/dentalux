@@ -77,6 +77,13 @@ const dentistSchema = {
   ...(siteUrl ? { "@id": `${siteUrl}/#dentist`, url: siteUrl } : {}),
   name: siteConfig.name,
   description: siteConfig.description,
+  telephone: siteConfig.phone.e164,
+  openingHoursSpecification: siteConfig.hours.periods.map((period) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: siteConfig.hours.dayOfWeek,
+    opens: period.opens,
+    closes: period.closes,
+  })),
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
