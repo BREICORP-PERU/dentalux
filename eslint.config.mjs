@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Árboles de trabajo y cachés locales ajenos a esta aplicación.
+    ".worktrees/**",
+    ".npm-upgrade-cache/**",
   ]),
 ]);
 

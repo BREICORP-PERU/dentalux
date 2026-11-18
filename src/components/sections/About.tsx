@@ -5,6 +5,7 @@ import { ArrowRight, CalendarCheck, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { siteConfig } from "@/config/site";
+import BrandCarousel from "@/components/ui/BrandCarousel";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -64,10 +65,11 @@ export default function About() {
             <div className="mt-7 h-1 w-20 rounded-full bg-gold-gradient" aria-hidden="true" />
 
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-charcoal">
-              {siteConfig.institutional.presentation}
+              {siteConfig.institutional.history}
             </p>
-            <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-              {siteConfig.institutional.philosophy}
+            <h3 className="mt-7 font-heading text-xl font-bold text-ink">Comprometidos con tu salud y bienestar dental</h3>
+            <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+              {siteConfig.institutional.valueProposition}
             </p>
 
             <div className="mt-9">
@@ -92,6 +94,20 @@ export default function About() {
               <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </a>
           </m.div>
+        </div>
+
+        <div className="mt-24">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-dark">¿Por qué elegirnos?</p>
+          <h3 className="mt-3 max-w-2xl font-heading text-3xl font-bold text-ink md:text-4xl">Tu confianza nos impulsa a seguir mejorando</h3>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {siteConfig.institutional.reasons.map((reason) => <div key={reason.title} className="rounded-2xl border border-line bg-white p-6"><h4 className="font-heading text-lg font-bold text-ink">{reason.title}</h4><p className="mt-3 text-sm leading-relaxed text-muted">{reason.text}</p></div>)}
+          </div>
+        </div>
+
+        <div className="mt-20 rounded-3xl border border-gold/25 bg-white p-7 sm:p-10">
+          <h3 className="font-heading text-2xl font-bold text-ink">Marcas con las que trabajamos</h3>
+          <p className="mt-2 text-sm text-muted">Productos y sistemas utilizados según el tratamiento indicado.</p>
+          <BrandCarousel brands={siteConfig.institutional.brands} />
         </div>
       </div>
     </section>

@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "src/components/sections/Hero.tsx": {
-    "mtime": 1793804739.7704098,
-    "seen": 1793804752.6381478,
-    "ast_hash": "622e719a3c84aa1019ff436e3f0533ec",
+    "mtime": 1795017765.747507,
+    "seen": 1795017829.8517952,
+    "ast_hash": "2d15564d203eed5dde25a56795abfc17",
     "semantic_hash": ""
   },
   "src/components/sections/Locations.tsx": {
@@ -209,42 +209,6 @@
     "ast_hash": "d09ecc0210a05d1b16208d9b9c2467eb",
     "semantic_hash": ""
   },
-  "public/tratamientos/blanqueamiento.webp": {
-    "mtime": 1793636112.3831418,
-    "seen": 1793642033.9197507,
-    "ast_hash": "6c73371af3c65ec52e9fdeb89021d862",
-    "semantic_hash": ""
-  },
-  "public/tratamientos/dise\u00f1osonrisa.webp": {
-    "mtime": 1793636120.582371,
-    "seen": 1793642033.9197543,
-    "ast_hash": "d6da892f2f6cffcd3584cd78650ab4bb",
-    "semantic_hash": ""
-  },
-  "public/tratamientos/gingivoplastia.webp": {
-    "mtime": 1793636120.4658089,
-    "seen": 1793642033.9197567,
-    "ast_hash": "b641d6a331177e7f10e388562dada15c",
-    "semantic_hash": ""
-  },
-  "public/tratamientos/implante.webp": {
-    "mtime": 1793636150.3082368,
-    "seen": 1793642033.9197588,
-    "ast_hash": "d8bbe32a637db6b80c859a9e0cffa792",
-    "semantic_hash": ""
-  },
-  "public/tratamientos/ortodoncia.webp": {
-    "mtime": 1793636120.5260751,
-    "seen": 1793642033.9197612,
-    "ast_hash": "69cc6f307ff8fcc2831ee3f138939898",
-    "semantic_hash": ""
-  },
-  "public/tratamientos/ortopedia.webp": {
-    "mtime": 1793636120.6210063,
-    "seen": 1793642033.9197636,
-    "ast_hash": "67ac7b0f41ad4a9e5fe8bc6e17f36272",
-    "semantic_hash": ""
-  },
   "src/app/dentaluxlogo.png": {
     "mtime": 1792778034.3033683,
     "seen": 1793642033.9197664,
@@ -327,6 +291,12 @@
     "mtime": 1793809877.516648,
     "seen": 1793810876.8327541,
     "ast_hash": "a4edc42d53537865c9c8716340cf2e40",
+    "semantic_hash": ""
+  },
+  "public/hero-dentalux-oficial.webp": {
+    "mtime": 1795017510.3815167,
+    "seen": 1795017829.8518674,
+    "ast_hash": "6886b5bad9fd1a28328f5d1e65545a2e",
     "semantic_hash": ""
   },
   "package-lock.json": {

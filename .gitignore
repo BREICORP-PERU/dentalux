@@ -41,6 +41,8 @@ yarn-error.log*
 # development artifacts, screenshots and temporary test evidence
 /artifacts/
 /tmp/
+/.npm-upgrade-cache/
+/.worktrees/
 
 # vercel
 .vercel

@@ -3,13 +3,16 @@
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ArrowRight, Check, Send, Sparkles, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { siteConfig } from "@/config/site";
+import { siteConfig, treatmentCatalog } from "@/config/site";
 import { WhatsAppIcon } from "./SocialIcons";
 
 const QUICK_TREATMENTS = [
-  ...siteConfig.services
-    .filter((service) => service.status === "confirmed" && service.publicationStatus === "approved")
-    .map((service) => service.title),
+  ...new Set([
+    ...siteConfig.services
+      .filter((service) => service.status === "confirmed" && service.publicationStatus === "approved")
+      .map((service) => service.title),
+    ...treatmentCatalog.flatMap((category) => category.treatments.map((treatment) => treatment.title)),
+  ]),
   "Otro",
 ];
 
@@ -151,13 +154,6 @@ export default function WhatsAppButton() {
             exit={{ opacity: 0, y: reduceMotion ? 0 : 12, scale: reduceMotion ? 1 : 0.9 }}
             className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2 md:bottom-7 md:right-7"
           >
-            {/* Burbuja de invitación — solo en botón compacto (< sm) */}
-            <div className="rounded-2xl border border-gray-100 bg-white px-3.5 py-2 shadow-lg shadow-black/15 sm:hidden">
-              <p className="whitespace-nowrap text-xs font-semibold text-gray-900">
-                💬 ¡Chatea con nosotros!
-              </p>
-            </div>
-
             <button
               ref={triggerButtonRef}
               type="button"

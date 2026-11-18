@@ -13,17 +13,15 @@ export default function Hero() {
     <section className="relative flex min-h-[760px] items-center overflow-hidden bg-ink text-white md:min-h-[780px] lg:min-h-[820px] lg:h-[100svh]">
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/hero-dentalux-referential.webp"
-          alt="Imagen referencial de una consulta odontológica en un espacio clínico contemporáneo"
+          src="/hero-dentalux-oficial.webp"
+          alt="Atención odontológica en DentaLux Clínica Dental"
           fill
           preload
-          className="object-cover object-[66%_center] sm:object-[58%_center] lg:object-center"
-          sizes="100vw"
-          quality={88}
+          className="-scale-x-100 object-cover object-[32%_center] sm:object-[38%_center] lg:object-center"
+          sizes="(max-width: 1024px) 1920px, 2048px"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_18%_54%,rgba(17,17,17,0.7)_0%,rgba(17,17,17,0.42)_58%,rgba(17,17,17,0.08)_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.96)_0%,rgba(17,17,17,0.88)_35%,rgba(17,17,17,0.42)_68%,rgba(17,17,17,0.2)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.42)_0%,transparent_28%,rgba(17,17,17,0.12)_68%,rgba(17,17,17,0.62)_100%)] lg:bg-[linear-gradient(180deg,rgba(17,17,17,0.6)_0%,transparent_38%,rgba(17,17,17,0.75)_100%)]" />
-        <div className="absolute inset-0 hidden bg-[radial-gradient(circle_at_76%_45%,transparent_0%,rgba(17,17,17,0.08)_35%,rgba(17,17,17,0.48)_100%)] lg:block" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,17,17,0.58)_0%,rgba(17,17,17,0.28)_58%,transparent_100%)] lg:bg-[linear-gradient(90deg,rgba(17,17,17,0.68)_0%,rgba(17,17,17,0.46)_35%,rgba(17,17,17,0.08)_72%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.12)_0%,transparent_32%,rgba(17,17,17,0.08)_72%,rgba(17,17,17,0.42)_100%)] lg:bg-[linear-gradient(180deg,rgba(17,17,17,0.16)_0%,transparent_38%,rgba(17,17,17,0.4)_100%)]" />
       </div>
 
       <div className="absolute left-0 top-0 z-[1] h-full w-px bg-gradient-to-b from-transparent via-gold/50 to-transparent lg:left-8" aria-hidden="true" />
@@ -57,7 +55,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.16 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-white/78 sm:text-lg md:text-xl"
           >
-            Solicita tu cita mediante el canal oficial de {siteConfig.shortName} y encuentra la clínica en {siteConfig.address.intermediate}.
+            Cuidamos tu salud bucal con experiencia, tecnología odontológica y atención personalizada en {siteConfig.address.locality}.
           </m.p>
 
           <m.div

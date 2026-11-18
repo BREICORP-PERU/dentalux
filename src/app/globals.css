@@ -192,3 +192,17 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes brands-scroll {
+  to { transform: translateX(-50%); }
+}
+
+.brands-track {
+  animation: brands-scroll 42s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-window { overflow-x: auto; }
+  .brands-track { animation: none !important; }
+  .brands-track > ul:last-child { display: none; }
+}

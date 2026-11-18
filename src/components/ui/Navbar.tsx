@@ -4,17 +4,15 @@ import { AnimatePresence, m } from "framer-motion";
 import { ArrowRight, CalendarCheck, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import { siteConfig } from "@/config/site";
+import { siteConfig, treatmentCatalog } from "@/config/site";
 import { cn } from "@/lib/utils";
 import BrandMark from "./BrandMark";
 
 const NAV_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Galería", href: "#galeria" },
-  ...(siteConfig.specialists.length > 0 ? [{ label: "Equipo", href: "#equipo" }] : []),
-  { label: "Preguntas", href: "#faq" },
-  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Inicio", href: "/" },
+  { label: "Conócenos", href: "/#nosotros" },
+  { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Contáctanos", href: "/#ubicacion" },
 ];
 
 export default function Navbar() {
@@ -89,14 +87,11 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <div className="hidden items-center gap-7 lg:flex xl:gap-9">
             {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group relative py-2 text-[13px] font-bold tracking-[0.02em] text-charcoal transition-colors hover:text-gold-dark"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gold-dark transition-[width] duration-300 group-hover:w-full" />
-              </Link>
+              <div key={link.href} className="group relative py-2">
+                <Link href={link.href} className="text-[13px] font-bold tracking-[0.02em] text-charcoal transition-colors hover:text-gold-dark">{link.label}</Link>
+                {link.label === "Conócenos" && <div className="invisible absolute left-0 top-full z-50 w-52 rounded-2xl border border-line bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"><Link href="/#nosotros" className="block rounded-xl px-4 py-3 text-sm hover:bg-gold-soft">Nuestra historia</Link><Link href="/#equipo" className="block rounded-xl px-4 py-3 text-sm hover:bg-gold-soft">Nuestro equipo</Link></div>}
+                {link.label === "Tratamientos" && <div className="invisible absolute left-0 top-full z-50 max-h-[70vh] w-64 overflow-y-auto rounded-2xl border border-line bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"><Link href="/tratamientos" className="block rounded-xl px-4 py-3 text-sm font-bold text-gold-dark hover:bg-gold-soft">Ver todos</Link>{treatmentCatalog.map((category) => <Link key={category.slug} href={`/tratamientos/${category.slug}`} className="block rounded-xl px-4 py-3 text-sm hover:bg-gold-soft">{category.title}</Link>)}</div>}
+              </div>
             ))}
           </div>
 
@@ -106,10 +101,10 @@ export default function Navbar() {
               href={siteConfig.reservations.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold-gradient px-7 py-2.5 text-sm font-bold text-ink shadow-lg shadow-gold/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gold/40 active:scale-95 premium-shadow"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold-gradient px-7 py-2.5 text-sm font-bold text-ink shadow-lg shadow-gold/25 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gold/40 active:scale-95 premium-shadow"
             >
               <CalendarCheck size={16} aria-hidden="true" />
-              <span>Reservar cita</span>
+              <span>{siteConfig.reservations.label}</span>
             </a>
           </div>
 
@@ -177,6 +172,8 @@ export default function Navbar() {
                     {link.label}
                     <ArrowRight className="ml-auto text-gold-dark opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" size={18} aria-hidden="true" />
                   </Link>
+                  {link.label === "Conócenos" && <div className="ml-9 mt-2 flex flex-wrap gap-4 text-sm text-muted"><Link href="/#nosotros" onClick={() => setMobileMenuOpen(false)} className="inline-flex min-h-11 items-center">Nuestra historia</Link><Link href="/#equipo" onClick={() => setMobileMenuOpen(false)} className="inline-flex min-h-11 items-center">Nuestro equipo</Link></div>}
+                  {link.label === "Tratamientos" && <details className="ml-9 mt-2 text-sm text-muted"><summary className="min-h-11 cursor-pointer py-3 font-semibold text-gold-dark">Ver especialidades</summary><div className="grid gap-1 pb-2">{treatmentCatalog.map((category) => <Link key={category.slug} href={`/tratamientos/${category.slug}`} onClick={() => setMobileMenuOpen(false)} className="block min-h-11 rounded-xl px-3 py-3 hover:bg-gold-soft">{category.title}</Link>)}</div></details>}
                 </m.div>
               ))}
             </div>

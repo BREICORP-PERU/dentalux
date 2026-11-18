@@ -80,7 +80,7 @@ export default function Gallery() {
           </m.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] sm:auto-rows-[220px] md:auto-rows-[240px]">
+        <div className="grid grid-flow-dense grid-cols-1 auto-rows-[minmax(220px,auto)] gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[minmax(240px,auto)]">
           {siteConfig.gallery.map((item, index) => (
             <m.button
               key={`${item.src}-${index}`}
@@ -95,17 +95,40 @@ export default function Gallery() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className={`group relative overflow-hidden rounded-3xl border border-line bg-white text-left brand-shadow cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
-                item.span === "wide" ? "col-span-2" : "col-span-1"
-              }`}
+                item.span === "wide" ? "sm:col-span-2" : item.span === "tablet-wide" ? "sm:col-span-2 lg:col-span-1" : ""
+              } ${item.afterSrc ? "min-h-[280px] sm:min-h-0" : ""}`}
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-105"
-                sizes={item.span === "wide" ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
+              {item.afterSrc ? (
+                <div className="absolute inset-0 flex flex-col bg-ink">
+                  <div className="relative grid min-h-0 flex-1 grid-cols-2">
+                    {([item.src, item.afterSrc] as const).map((src, imageIndex) => (
+                      <div key={src} className="relative overflow-hidden">
+                        <Image src={src} alt={`${item.label}: ${imageIndex === 0 ? "antes" : "después"}`} fill className="object-cover object-center transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw" />
+                        <span className="absolute bottom-2 left-2 z-10 rounded-full bg-ink/80 px-2 py-1 text-[10px] font-bold text-white sm:left-3">{imageIndex === 0 ? "Antes" : "Después"}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="relative z-10 shrink-0 px-4 py-3 sm:px-5">
+                    <p className="font-heading text-base font-bold leading-tight text-white sm:text-lg">{item.label}</p>
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/75">{item.note}</p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover object-[center_25%] transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes={item.span === "tablet-wide" ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 33vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-75 transition-opacity duration-300 group-hover:opacity-90" />
+                  <div className="absolute inset-x-0 bottom-0 translate-y-1 p-4 transition-transform duration-300 group-hover:translate-y-0 sm:p-5">
+                    <p className="font-heading text-base font-bold leading-tight text-white sm:text-lg">{item.label}</p>
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/75">{item.note}</p>
+                  </div>
+                </>
+              )}
               
               {item.category && (
                 <div className="absolute top-3.5 left-3.5 z-10">
@@ -114,13 +137,6 @@ export default function Gallery() {
                   </span>
                 </div>
               )}
-
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                <p className="font-heading text-base sm:text-lg font-bold text-white leading-tight">
-                  {item.label}
-                </p>
-                <p className="mt-1 text-xs leading-relaxed text-white/75 line-clamp-2">{item.note}</p>
-              </div>
 
               <div className="absolute top-3.5 right-3.5 grid h-8 w-8 place-items-center rounded-full bg-white/15 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
                 <Expand size={15} aria-hidden="true" />
@@ -191,13 +207,24 @@ export default function Gallery() {
               </button>
 
               <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-surface">
-                <Image
-                  src={activeItem.src}
-                  alt={activeItem.alt}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 1024px) 100vw, 1200px"
-                />
+                {activeItem.afterSrc ? (
+                  <div className="absolute inset-0 grid grid-cols-2 gap-1 bg-ink">
+                    {([activeItem.src, activeItem.afterSrc] as const).map((src, imageIndex) => (
+                      <div key={src} className="relative min-w-0">
+                        <Image src={src} alt={`${activeItem.label}: ${imageIndex === 0 ? "antes" : "después"}`} fill className="object-contain" sizes="(max-width: 1024px) 50vw, 600px" />
+                        <span className="absolute bottom-2 left-2 rounded-full bg-ink/80 px-3 py-1 text-xs font-bold text-white">{imageIndex === 0 ? "Antes" : "Después"}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <Image
+                    src={activeItem.src}
+                    alt={activeItem.alt}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 1200px"
+                  />
+                )}
               </div>
 
               <div className="px-6 py-5 border-t border-line bg-white">

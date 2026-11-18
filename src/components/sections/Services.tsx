@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { m, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { siteConfig, type Service } from "@/config/site";
 import { WhatsAppIcon } from "@/components/ui/SocialIcons";
@@ -128,7 +129,7 @@ export default function Services() {
                   <button
                     type="button"
                     onClick={() => handleConsultWhatsApp(service.title)}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gold/35 bg-gold-soft/60 px-4 py-2.5 text-xs font-bold text-gold-dark transition duration-200 hover:border-gold hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold active:scale-[0.98]"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-gold/35 bg-gold-soft/60 px-4 py-2.5 text-xs font-bold text-gold-dark transition duration-200 hover:border-gold hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     <span>Consultar por WhatsApp</span>
@@ -138,6 +139,8 @@ export default function Services() {
             );
           })}
         </div>
+
+        <div className="mt-10 text-center"><Link href="/tratamientos" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-gold px-7 py-3 font-bold text-gold-dark transition hover:bg-gold-soft">Ver todos los tratamientos <ChevronRight size={18} aria-hidden="true" /></Link></div>
 
         <div className="mt-14 overflow-hidden rounded-[2rem] bg-ink shadow-[0_24px_70px_-35px_rgba(17,17,17,0.7)]">
           <div className="relative flex flex-col items-start justify-between gap-7 px-7 py-8 sm:px-9 md:flex-row md:items-center md:px-11 md:py-10">

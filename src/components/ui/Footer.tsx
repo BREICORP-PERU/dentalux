@@ -11,12 +11,12 @@ const SOCIAL_ICON_MAP: Record<string, React.ElementType> = {
 };
 
 const navigation = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Galería", href: "#galeria" },
-  ...(siteConfig.specialists.length > 0 ? [{ label: "Equipo", href: "#equipo" }] : []),
-  { label: "Preguntas", href: "#faq" },
-  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Inicio", href: "/" },
+  { label: "Conócenos", href: "/#nosotros" },
+  { label: "Nuestro equipo", href: "/#equipo" },
+  { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Galería", href: "/#galeria" },
+  { label: "Contáctanos", href: "/#ubicacion" },
 ];
 
 export default function Footer() {
@@ -108,7 +108,7 @@ export default function Footer() {
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-ink transition hover:bg-gold-hover active:scale-95"
             >
               <CalendarCheck size={16} aria-hidden="true" />
-              Reservar cita
+              {siteConfig.reservations.label}
             </a>
           </div>
         </div>

@@ -100,16 +100,6 @@ const dentistSchema = {
   sameAs: socialLinks.map((social) => social.href),
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: siteConfig.faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
-
 const safeJsonLd = (data: unknown) =>
   JSON.stringify(data)
     .replace(/</g, "\\u003c")
@@ -118,7 +108,7 @@ const safeJsonLd = (data: unknown) =>
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={siteConfig.language} className="scroll-smooth">
+    <html lang={siteConfig.language} className="scroll-smooth" data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
         <a
           href="#main-content"
@@ -129,10 +119,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(dentistSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: safeJsonLd(faqSchema) }}
         />
         <MotionProvider>
           <Navbar />
